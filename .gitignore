@@ -37,5 +37,14 @@
 *.out
 *.app
 
+# Arquivos de configuração do VS Code
+.vscode/
+
+# Arquivos gerados pelo Doxygen
+html/
+latex/
+
+# Arquivos de backup
+*.bak
 # debug information files
 *.dwo
