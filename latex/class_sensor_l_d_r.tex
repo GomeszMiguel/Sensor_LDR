@@ -1,0 +1,150 @@
+\doxysection{Referência da Classe Sensor\+LDR}
+\hypertarget{class_sensor_l_d_r}{}\label{class_sensor_l_d_r}\index{SensorLDR@{SensorLDR}}
+
+
+Classe para leitura e cálculo de luminosidade a partir de um LDR.  
+
+
+
+
+Diagrama de colaboração para Sensor\+LDR\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=235pt]{class_sensor_l_d_r__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membros Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_sensor_l_d_r_a79fb92cf93f8e1b476bbf3073b143432}{Sensor\+LDR}} (const std\+::string \&adc\+Path)
+\begin{DoxyCompactList}\small\item\em Construtor da classe \doxylink{class_sensor_l_d_r}{Sensor\+LDR}. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sensor_l_d_r_aa293a835a0aba71884e116af2db215f8}{ler\+Valor}} ()
+\begin{DoxyCompactList}\small\item\em Lê o valor cru do ADC. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_sensor_l_d_r_a9da6791dcab08a2bc8aa08751cb7abe2}{ler\+Luminosidade\+Percentual}} ()
+\begin{DoxyCompactList}\small\item\em Calcula a luminosidade em percentual com base no valor lido do ADC. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Classe para leitura e cálculo de luminosidade a partir de um LDR. 
+
+A classe realiza a leitura de valores crus do ADC, calcula a resistência do LDR e mapeia para uma escala percentual de luminosidade. 
+
+\label{doc-constructors}
+\Hypertarget{class_sensor_l_d_r_doc-constructors}
+\doxysubsection{Construtores e Destrutores}
+\Hypertarget{class_sensor_l_d_r_a79fb92cf93f8e1b476bbf3073b143432}\index{SensorLDR@{SensorLDR}!SensorLDR@{SensorLDR}}
+\index{SensorLDR@{SensorLDR}!SensorLDR@{SensorLDR}}
+\doxysubsubsection{\texorpdfstring{SensorLDR()}{SensorLDR()}}
+{\footnotesize\ttfamily \label{class_sensor_l_d_r_a79fb92cf93f8e1b476bbf3073b143432} 
+Sensor\+LDR\+::\+Sensor\+LDR (\begin{DoxyParamCaption}\item[{const std\+::string \&}]{adc\+Path}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Construtor da classe \doxylink{class_sensor_l_d_r}{Sensor\+LDR}. 
+
+
+\begin{DoxyParams}{Parâmetros}
+{\em adc\+Path} & Caminho para o arquivo sysfs do ADC (ex.\+: {\ttfamily /sys/bus/iio/devices/...}). \\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ path\ =\ adcPath;}
+\DoxyCodeLine{00039\ \ \ \ \ \}}
+
+\end{DoxyCode}
+
+
+\label{doc-func-members}
+\Hypertarget{class_sensor_l_d_r_doc-func-members}
+\doxysubsection{Documentação das funções}
+\Hypertarget{class_sensor_l_d_r_a9da6791dcab08a2bc8aa08751cb7abe2}\index{SensorLDR@{SensorLDR}!lerLuminosidadePercentual@{lerLuminosidadePercentual}}
+\index{lerLuminosidadePercentual@{lerLuminosidadePercentual}!SensorLDR@{SensorLDR}}
+\doxysubsubsection{\texorpdfstring{lerLuminosidadePercentual()}{lerLuminosidadePercentual()}}
+{\footnotesize\ttfamily \label{class_sensor_l_d_r_a9da6791dcab08a2bc8aa08751cb7abe2} 
+int Sensor\+LDR\+::ler\+Luminosidade\+Percentual (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Calcula a luminosidade em percentual com base no valor lido do ADC. 
+
+O cálculo utiliza a relação logarítmica entre a resistência do LDR e a intensidade luminosa.
+
+\begin{DoxyReturn}{Retorna}
+Luminosidade percentual (0 a 100). 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor\ =\ \mbox{\hyperlink{class_sensor_l_d_r_aa293a835a0aba71884e116af2db215f8}{lerValor}}();}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ r\_ldr\ =\ R\_FIXO*(ADC\_MAX\ -\/\ valor)/valor;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_ldr\ =\ log(r\_ldr);}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_claro\ =\ log(R\_CLARO);}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_escuro\ =\ log(R\_ESCURO);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ >\ log\_r\_escuro)\ \{}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ <\ log\_r\_claro)\ \{}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 100;}
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ porcentagem\ =\ 100.0\ *\ (log\_r\_escuro\ -\/\ log\_r\_ldr)\ /\ (log\_r\_escuro\ -\/\ log\_r\_claro);}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(porcentagem);}
+\DoxyCodeLine{00074\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Este é o diagrama das funções utilizadas por essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sensor_l_d_r_a9da6791dcab08a2bc8aa08751cb7abe2_cgraph}
+\end{center}
+\end{figure}
+Esse é o diagrama das funções que utilizam essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=297pt]{class_sensor_l_d_r_a9da6791dcab08a2bc8aa08751cb7abe2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{class_sensor_l_d_r_aa293a835a0aba71884e116af2db215f8}\index{SensorLDR@{SensorLDR}!lerValor@{lerValor}}
+\index{lerValor@{lerValor}!SensorLDR@{SensorLDR}}
+\doxysubsubsection{\texorpdfstring{lerValor()}{lerValor()}}
+{\footnotesize\ttfamily \label{class_sensor_l_d_r_aa293a835a0aba71884e116af2db215f8} 
+int Sensor\+LDR\+::ler\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [inline]}}
+
+
+
+Lê o valor cru do ADC. 
+
+\begin{DoxyReturn}{Retorna}
+Valor inteiro lido diretamente do ADC. 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ std::ifstream\ file(path);}
+\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor;}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ file\ >>\ valor;}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ valor;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+
+\end{DoxyCode}
+Esse é o diagrama das funções que utilizam essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{class_sensor_l_d_r_aa293a835a0aba71884e116af2db215f8_icgraph}
+\end{center}
+\end{figure}
+
+
+A documentação para essa classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/carlo/\+One\+Drive/\+Documentos/\+ELETRONICA\+\_\+\+IME/\+PROG\+\_\+\+APLICADA/codigo\+\_\+doxygen/\mbox{\hyperlink{sensor__ldr_8cpp}{sensor\+\_\+ldr.\+cpp}}\end{DoxyCompactItemize}

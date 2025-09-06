@@ -1,0 +1,13 @@
+<map id="C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/sensor_ldr.cpp" name="C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/sensor_ldr.cpp">
+<area shape="rect" id="Node000001" title="Implementação de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado." alt="" coords="111,5,323,80"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="5,128,77,155"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="151,83,79,122,76,118,149,78"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="100,128,166,155"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="187,82,156,118,152,114,183,79"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="190,128,244,155"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="220,80,220,112,214,112,214,80"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="267,128,335,155"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="251,79,282,114,278,118,247,82"/>
+<area shape="rect" id="Node000006" title=" " alt="" coords="359,128,416,155"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="283,78,354,118,351,122,281,83"/>
+</map>

@@ -1,0 +1,84 @@
+\doxysection{Referência do Arquivo C\+:/\+Users/carlo/\+One\+Drive/\+Documentos/\+ELETRONICA\+\_\+\+IME/\+PROG\+\_\+\+APLICADA/codigo\+\_\+doxygen/sensor\+\_\+ldr.cpp}
+\hypertarget{sensor__ldr_8cpp}{}\label{sensor__ldr_8cpp}\index{C:/Users/carlo/OneDrive/Documentos/ELETRONICA\_IME/PROG\_APLICADA/codigo\_doxygen/sensor\_ldr.cpp@{C:/Users/carlo/OneDrive/Documentos/ELETRONICA\_IME/PROG\_APLICADA/codigo\_doxygen/sensor\_ldr.cpp}}
+
+
+Implementação de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+Gráfico de dependência de inclusões para sensor\+\_\+ldr.\+cpp\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sensor__ldr_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_sensor_l_d_r}{Sensor\+LDR}}
+\begin{DoxyCompactList}\small\item\em Classe para leitura e cálculo de luminosidade a partir de um LDR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Função principal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Implementação de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado. 
+
+\begin{DoxyAuthor}{Autor}
+Miguel Gomes 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+03 de Setembro de 2025
+\end{DoxyDate}
+Este programa lê valores do ADC exportados no sysfs e converte a resistência do LDR em uma estimativa percentual de luminosidade (0\% = escuro, 100\% = claro). 
+
+\label{doc-func-members}
+\Hypertarget{sensor__ldr_8cpp_doc-func-members}
+\doxysubsection{Funções}
+\Hypertarget{sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{sensor\_ldr.cpp@{sensor\_ldr.cpp}!main@{main}}
+\index{main@{main}!sensor\_ldr.cpp@{sensor\_ldr.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Função principal. 
+
+Cria um objeto \doxylink{class_sensor_l_d_r}{Sensor\+LDR}, lê continuamente a luminosidade e imprime na saída padrão.
+
+\begin{DoxyReturn}{Retorna}
+0 em caso de execução normal (embora nunca alcance o return devido ao loop). 
+\end{DoxyReturn}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00085\ \ \ \ \ \mbox{\hyperlink{class_sensor_l_d_r}{SensorLDR}}\ ldr(\textcolor{stringliteral}{"{}/sys/bus/iio/devices/iio:device0/in\_voltage13\_raw"{}});}
+\DoxyCodeLine{00086\ }
+\DoxyCodeLine{00087\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ val\ =\ ldr.lerLuminosidadePercentual();}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Luminosidade:\ "{}}\ <<\ val\ <<\ \textcolor{stringliteral}{"{}\%"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ sleep(1);}
+\DoxyCodeLine{00091\ \ \ \ \ \}}
+\DoxyCodeLine{00092\ }
+\DoxyCodeLine{00093\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00094\ \}}
+
+\end{DoxyCode}
+Este é o diagrama das funções utilizadas por essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}

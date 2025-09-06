@@ -1,0 +1,19 @@
+var NAVTREEINDEX0 =
+{
+"annotated.html":[0,0],
+"class_sensor_l_d_r.html":[0,0,0],
+"class_sensor_l_d_r.html#a79fb92cf93f8e1b476bbf3073b143432":[0,0,0,0],
+"class_sensor_l_d_r.html#a9da6791dcab08a2bc8aa08751cb7abe2":[0,0,0,1],
+"class_sensor_l_d_r.html#aa293a835a0aba71884e116af2db215f8":[0,0,0,2],
+"classes.html":[0,1],
+"dir_3cb6e0ca0149ee4fcf05e71bc8369315.html":[1,0,0],
+"files.html":[1,0],
+"functions.html":[0,2,0],
+"functions_func.html":[0,2,1],
+"globals.html":[1,1,0],
+"globals_func.html":[1,1,1],
+"index.html":[],
+"pages.html":[],
+"sensor__ldr_8cpp.html":[1,0,0,0],
+"sensor__ldr_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4":[1,0,0,0,1]
+};
