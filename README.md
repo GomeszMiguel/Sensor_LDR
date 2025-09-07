@@ -77,6 +77,17 @@ O `Doxyfile` é o arquivo central de configuração que diz ao Doxygen quais for
     GENERATE_HTML          = YES
     GENERATE_LATEX         = YES
     GENERATE_RTF           = YES
+    HAVE_DOT               = YES
+    COLLABORATION_GRAPH    = YES
+    CLASS_GRAPH            = YES
+    GROUP_GRAPHS           = YES
+    INCLUDE_GRAPH          = YES
+    INCLUDED_BY_GRAPH      = YES
+    CALL_GRAPH             = YES
+    DIRECTORY_GRAPH        = YES
+    UML_LOOK               = YES
+    TEMPLATE_RELATIONS     = YES
+    GRAPHICAL_HIERARCHY    = YES
     ```
 
 5.  **Execute o Doxygen**: Salve o `Doxyfile` e execute o comando `doxygen` na raiz do seu projeto.
