@@ -24,7 +24,7 @@ O código-fonte está estruturado de forma modular para promover o encapsulament
     * **Descrição:** Esta classe é responsável por toda a interação com o hardware do sensor LDR. Ela abstrai os detalhes de baixo nível da leitura do ADC (Conversor Analógico-Digital) via `sysfs` no Linux embarcado.
     * **Métodos Principais:**
         * `lerValor()`: Realiza a leitura do valor cru do ADC associado ao sensor.
-        * *(Adicione outros métodos importantes aqui, por exemplo: `converterParaLux()` ou `verificarViolacao()`)*.
+        * `lerLuminosidadePercentual()`: Calcula a luminosidade em percentual com base no valor lido do ADC.
 
 ### Instruções de Compilação e Execução
 
@@ -44,7 +44,7 @@ Siga as etapas abaixo para compilar e executar o módulo do sensor.
     ```
 
 3.  **Executar na Placa STM32MP1:**
-    1.  Transfira o arquivo executável `sensor_ldr` para a placa (via `scp`, `sshfs` ou cartão SD).
+    1.  Transfira o arquivo executável `sensor_ldr` para a placa via `scp`.
     2.  No terminal da placa, dê permissão de execução ao arquivo:
         ```bash
         chmod +x sensor_ldr
@@ -55,13 +55,38 @@ Siga as etapas abaixo para compilar e executar o módulo do sensor.
         ```
     O programa começará a exibir as leituras de luminosidade no terminal.
 
-### Geração da Documentação
+ ### Geração da Documentação Doxygen em Vários Formatos
 
-Todo o código é documentado usando o padrão Doxygen. Para gerar a documentação completa em HTML:
+O `Doxyfile` é o arquivo central de configuração que diz ao Doxygen quais formatos de documentação devem ser gerados.
 
-1.  Certifique-se de que o Doxygen e o Graphviz estão instalados.
-2.  Na raiz do projeto, execute o comando:
+### Passo a Passo para Gerar LaTeX, RTF e HTML:
+
+1. Certifique-se de que o Doxygen e o Graphviz estão instalados.
+
+2.  **Encontre seu `Doxyfile`**: Certifique-se de que você já tenha um `Doxyfile` no diretório raiz do seu projeto. Se não tiver, você pode gerá-lo usando o comando `doxygen -g`.
+
+3.  **Edite o `Doxyfile`**: Abra o arquivo `Doxyfile` em um editor de texto (como o VS Code, Notepad++ ou Bloco de Notas).
+
+4.  **Habilite os Formatos Desejados**: Procure pelas seguintes linhas e mude seus valores de `NO` para `YES`.
+
+    ```
+    GENERATE_HTML          = YES
+    GENERATE_LATEX         = YES
+    GENERATE_RTF           = YES
+    ```
+
+5.  **Execute o Doxygen**: Salve o `Doxyfile` e execute o comando `doxygen` na raiz do seu projeto.
+
     ```bash
     doxygen
     ```
-3.  A documentação será gerada em uma nova pasta `html/`. Abra o arquivo `index.html` em um navegador para explorar as classes, métodos e diagramas.
+
+### Resultados da Geração
+
+Após a execução, o Doxygen criará as seguintes pastas no diretório do seu projeto (assumindo que as configurações padrão estejam ativadas):
+
+* `html/`: Contém a documentação em formato de páginas web.
+* `latex/`: Contém os arquivos-fonte `.tex` necessários para compilar um PDF da sua documentação. Para gerar o PDF, navegue até esta pasta no terminal e use o comando `make`.
+* `rtf/`: Contém a documentação no formato Rich Text Format, que pode ser aberto por editores de texto como o Microsoft Word.
+
+Navegue pelos diferentes formatos para explorar as classes, métodos e diagramas.
