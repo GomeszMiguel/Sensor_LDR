@@ -38,7 +38,7 @@ Siga as etapas abaixo para compilar e executar o módulo do sensor.
 
 2.  **Compilar o Código (Cross-compilation):**
     1.   **Baixar a toolchain**: Baixe o arquivo `arm-buildroot-linux-gnueabihf_sdk-buildroot.tar.gz` nesse [link](https://drive.google.com/file/d/1qpq3QeK5f7T061LFA0JlJz2fgMQDvyMn/view). Esta toolchain permitirá a **compilação cruzada** para o kit de desenvolvimento DK1.
-    2.   **Instalar a toolchain**: Copie o arquivo baixado para a sua máquina virtual e extraia-o com o comando:
+    2.   **Instalar a toolchain**: Extraia-o com o comando:
     ```bash
     tar -xvf arm-buildroot-linux-gnueabihf_sdk-buildroot.tar.gz
     ```
