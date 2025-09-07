@@ -37,8 +37,12 @@ Siga as etapas abaixo para compilar e executar o módulo do sensor.
     ```
 
 2.  **Compilar o Código (Cross-compilation):**
-    Execute o comando abaixo no seu ambiente de desenvolvimento para compilar o código para a arquitetura da placa STM32MP1.
-    *(Este é um exemplo, ajuste o comando conforme seu toolchain)*
+    1.   **Baixar a toolchain**: Baixe o arquivo `arm-buildroot-linux-gnueabihf_sdk-buildroot.tar.gz`. Esta toolchain permitirá a **compilação cruzada** para o kit de desenvolvimento DK1.
+    2.   **Instalar a toolchain**: Copie o arquivo baixado para a sua máquina virtual e extraia-o com o comando:
+    ```bash
+    tar -xvf arm-buildroot-linux-gnueabihf_sdk-buildroot.tar.gz
+    ```
+    3.   Execute o comando abaixo no seu ambiente de desenvolvimento para compilar o código para a arquitetura da placa STM32MP1.
     ```bash
     arm-linux-gnueabihf-g++ -o sensor_ldr main.cpp SensorLDR.cpp
     ```
