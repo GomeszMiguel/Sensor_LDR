@@ -48,7 +48,7 @@ Siga as etapas abaixo para compilar e executar o módulo do sensor.
     ```
 
 3.  **Executar na Placa STM32MP1:**
-    1.  Transfira o arquivo executável `sensor_ldr` para a placa via `scp`.
+    1.  Transfira o arquivo executável `sensor_ldr_arm` para a placa via `scp`.
     2.  No terminal da placa, dê permissão de execução ao arquivo:
     ```bash
     chmod +x sensor_ldr_arm
@@ -59,7 +59,6 @@ Siga as etapas abaixo para compilar e executar o módulo do sensor.
     ```
     O programa começará a exibir as leituras de luminosidade no terminal.
 
----
 
 ### Exemplo de Execução: Monitoramento em Ação
 
@@ -69,7 +68,6 @@ O programa lê continuamente o valor bruto do canal (in_voltage13_raw), que repr
 
 ![Execução do programa no terminal](./assets/leitura_sensor.png)
 
----
 
 ### Geração da Documentação Doxygen em Vários Formatos
 
