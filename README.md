@@ -37,35 +37,47 @@ Siga as etapas abaixo para compilar e executar o módulo do sensor.
     ```
 
 2.  **Compilar o Código (Cross-compilation):**
-    1.   **Baixar a toolchain**: Baixe o arquivo `arm-buildroot-linux-gnueabihf_sdk-buildroot.tar.gz` nesse [link](https://drive.google.com/file/d/1qpq3QeK5f7T061LFA0JlJz2fgMQDvyMn/view). Esta toolchain permitirá a **compilação cruzada** para o kit de desenvolvimento DK1.
-    2.   **Instalar a toolchain**: Extraia-o com o comando:
+    1.  **Baixar a toolchain**: Baixe o arquivo `arm-buildroot-linux-gnueabihf_sdk-buildroot.tar.gz` nesse [link](https://drive.google.com/file/d/1qpq3QeK5f7T061LFA0JlJz2fgMQDvyMn/view). Esta toolchain permitirá a **compilação cruzada** para o kit de desenvolvimento DK1.
+    2.  **Instalar a toolchain**: Extraia-o com o comando:
     ```bash
     tar -xvf arm-buildroot-linux-gnueabihf_sdk-buildroot.tar.gz
     ```
-    3.   Execute o comando abaixo no seu ambiente de desenvolvimento para compilar o código para a arquitetura da placa STM32MP1.
+    3.  Execute o comando abaixo no seu ambiente de desenvolvimento para compilar o código para a arquitetura da placa STM32MP1.
     ```bash
-    arm-linux-gnueabihf-g++ -o sensor_ldr main.cpp SensorLDR.cpp
+    arm-linux-gnueabihf-g++ -o sensor_ldr_arm sensor_ldr.cpp
     ```
 
 3.  **Executar na Placa STM32MP1:**
     1.  Transfira o arquivo executável `sensor_ldr` para a placa via `scp`.
     2.  No terminal da placa, dê permissão de execução ao arquivo:
-        ```bash
-        chmod +x sensor_ldr
-        ```
+    ```bash
+    chmod +x sensor_ldr_arm
+    ```
     3.  Execute o programa:
-        ```bash
-        ./sensor_ldr
-        ```
+    ```bash
+    ./sensor_ldr_arm
+    ```
     O programa começará a exibir as leituras de luminosidade no terminal.
 
- ### Geração da Documentação Doxygen em Vários Formatos
+---
+
+### Exemplo de Execução: Monitoramento em Ação
+
+Esta seção demonstra o comportamento esperado do programa **`sensor_ldr_arm`** em tempo real, mostrando como o valor do sensor de luminosidade é exibido no terminal.
+
+O programa lê continuamente o valor bruto do canal (in_voltage13_raw), que representa o nível de luminosidade captado pelo sensor LDR.
+
+![Execução do programa no terminal](./assets/leitura_sensor.png)
+
+---
+
+### Geração da Documentação Doxygen em Vários Formatos
 
 O `Doxyfile` é o arquivo central de configuração que diz ao Doxygen quais formatos de documentação devem ser gerados.
 
 ### Passo a Passo para Gerar LaTeX, RTF e HTML:
 
-1. Certifique-se de que o Doxygen e o Graphviz estão instalados.
+1.  Certifique-se de que o Doxygen e o Graphviz estão instalados.
 
 2.  **Encontre seu `Doxyfile`**: Certifique-se de que você já tenha um `Doxyfile` no diretório raiz do seu projeto. Se não tiver, você pode gerá-lo usando o comando `doxygen -g`.
 
@@ -74,20 +86,20 @@ O `Doxyfile` é o arquivo central de configuração que diz ao Doxygen quais for
 4.  **Habilite os Formatos Desejados**: Procure pelas seguintes linhas e mude seus valores de `NO` para `YES`.
 
     ```
-    GENERATE_HTML          = YES
-    GENERATE_LATEX         = YES
-    GENERATE_RTF           = YES
-    HAVE_DOT               = YES
-    COLLABORATION_GRAPH    = YES
-    CLASS_GRAPH            = YES
-    GROUP_GRAPHS           = YES
-    INCLUDE_GRAPH          = YES
-    INCLUDED_BY_GRAPH      = YES
-    CALL_GRAPH             = YES
-    DIRECTORY_GRAPH        = YES
-    UML_LOOK               = YES
-    TEMPLATE_RELATIONS     = YES
-    GRAPHICAL_HIERARCHY    = YES
+    GENERATE_HTML         = YES
+    GENERATE_LATEX        = YES
+    GENERATE_RTF          = YES
+    HAVE_DOT              = YES
+    COLLABORATION_GRAPH   = YES
+    CLASS_GRAPH           = YES
+    GROUP_GRAPHS          = YES
+    INCLUDE_GRAPH         = YES
+    INCLUDED_BY_GRAPH     = YES
+    CALL_GRAPH            = YES
+    DIRECTORY_GRAPH       = YES
+    UML_LOOK              = YES
+    TEMPLATE_RELATIONS    = YES
+    GRAPHICAL_HIERARCHY   = YES
     ```
 
 5.  **Execute o Doxygen**: Salve o `Doxyfile` e execute o comando `doxygen` na raiz do seu projeto.
