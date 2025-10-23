@@ -147,7 +147,7 @@
 {\listoverride\listid3\listoverridecount0\ls3}
 }
 {\info 
-{\title {\comment Sensor_LDR }Sensor_LDR}
+{\title {\comment ClienteUDP_Sensor_LDR }ClienteUDP_Sensor_LDR}
 {\comment Gerado por doxygen 1.14.0.}
 }\pard\plain 
 \sectd\pgnlcrm
@@ -155,7 +155,7 @@
 \pard\plain \s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid 
 \vertalc\qc\par\par\par\par\par\par\par
 \pard\plain \s15\qc\sb240\sa60\widctlpar\outlinelevel0\adjustright \b\f1\fs32\kerning28\cgrid 
-{\field\fldedit {\*\fldinst TITLE \\*MERGEFORMAT}{\fldrslt Sensor_LDR}}\par
+{\field\fldedit {\*\fldinst TITLE \\*MERGEFORMAT}{\fldrslt ClienteUDP_Sensor_LDR}}\par
 \pard\plain \s16\qc\sa60\widctlpar\outlinelevel1\adjustright \f1\cgrid 
 \par
 \par\par\par\par\par\par\par\par\par\par\par\par
@@ -183,7 +183,7 @@ Lista de Classes\par \pard\plain
 \par
 \pard\plain \s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
 {\b {\b SensorLDR} ({\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-Classe para leitura e c\'E1lculo de luminosidade a partir de um LDR })} \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAD \\*MERGEFORMAT}{\fldrslt pagenum}}
+Classe para leitura e c\'E1lculo de luminosidade a partir de um LDR })} \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAH \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
 \par}
 \pard\plain \sect\sbkpage
@@ -197,7 +197,7 @@ Lista de Arquivos\par \pard\plain
 {
 \par
 \pard\plain \s101\li360\sa27\sb27\widctlpar\tqr\tldot\tx8640\adjustright \fs20\cgrid 
-{\b C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/{\b sensor_ldr.cpp} ({\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+{\b C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/{\b clienteUDP_sensor_ldr.cpp} ({\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 Implementa\'E7\'E3o de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado })} \tab {\field\fldedit {\*\fldinst PAGEREF AAAAAAAAAA \\*MERGEFORMAT}{\fldrslt pagenum}}
 \par
 \par}
@@ -209,8 +209,8 @@ Classes{\tc \v Classes}
 Refer\'EAncia da Classe SensorLDR\par \pard\plain 
 {\tc\tcl2 \v SensorLDR}
 {\xe \v SensorLDR}
-{\bkmkstart AAAAAAAAAD}
-{\bkmkend AAAAAAAAAD}
+{\bkmkstart AAAAAAAAAH}
+{\bkmkend AAAAAAAAAH}
 \par
 {
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
@@ -257,11 +257,11 @@ Classe para leitura e c\'E1lculo de luminosidade a partir de um LDR. \par
 }
 
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-A classe realiza a leitura de valores crus do ADC, calcula a resist\'EAncia do LDR e mapeia para uma escala percentual de luminosidade. \par
+A classe realiza a leitura de valores crus do ADC, calcula a resist\'EAncia do LDR e mapeia para uma escala percentual de luminosidade, utilizando a lei de pot\'EAncia que relaciona a resist\'EAncia com a intensidade luminosa (logar\'EDtmica). \par
 }}
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
-{\bkmkstart AAAAAAAAAE}
-{\bkmkend AAAAAAAAAE}
+{\bkmkstart AAAAAAAAAI}
+{\bkmkend AAAAAAAAAI}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Construtores e Destrutores\par
 \pard\plain 
@@ -271,8 +271,8 @@ Construtores e Destrutores\par
 {\b 
 SensorLDR::SensorLDR (const std::string & adcPath){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAAAF}
-{\bkmkend AAAAAAAAAF}
+{\bkmkstart AAAAAAAAAJ}
+{\bkmkend AAAAAAAAAJ}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -287,19 +287,19 @@ Par\'E2metros\par}
 \clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
 \clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
 \pard \widctlpar\intbl\adjustright
-{{\i adcPath} \cell }{Caminho para o arquivo sysfs do ADC (ex.: {\f2 /sys/bus/iio/devices/...} ). \cell }
+{{\i adcPath} \cell }{Caminho para o arquivo sysfs do ADC. \cell }
 {\row }
 }
 }{
 \par
-\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 37                                         \{\par
-38         path = adcPath;\par
-39     \}\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 48                                         \{\par
+49         path = adcPath;\par
+50     \}\par
 }
 }
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
-{\bkmkstart AAAAAAAAAG}
-{\bkmkend AAAAAAAAAG}
+{\bkmkstart AAAAAAAAAK}
+{\bkmkend AAAAAAAAAK}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Documenta\'E7\'E3o das fun\'E7\'F5es\par
 \pard\plain 
@@ -309,8 +309,8 @@ Documenta\'E7\'E3o das fun\'E7\'F5es\par
 {\b 
 int SensorLDR::lerLuminosidadePercentual (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAAAH}
-{\bkmkend AAAAAAAAAH}
+{\bkmkstart AAAAAAAAAL}
+{\bkmkend AAAAAAAAAL}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -318,28 +318,36 @@ int SensorLDR::lerLuminosidadePercentual (){\f2 [inline]}}}
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 Calcula a luminosidade em percentual com base no valor lido do ADC. }}\par
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-O c\'E1lculo utiliza a rela\'E7\'E3o logar\'EDtmica entre a resist\'EAncia do LDR e a intensidade luminosa.\par
+O c\'E1lculo utiliza a f\'F3rmula do divisor de tens\'E3o para obter a R_LDR, e ent\'E3o mapeia a resist\'EAncia (em escala logar\'EDtmica) para uma porcentagem (0-100).\par
 {{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs16\cgrid 
 Retorna\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 Luminosidade percentual (0 a 100). \par
 }}}{
 \par
-\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 59                                     \{\par
-60         {\cf18 int} valor = lerValor();\par
-61         {\cf18 float} r_ldr = R_FIXO*(ADC_MAX - valor)/valor;\par
-62         {\cf18 float} log_r_ldr = log(r_ldr);\par
-63         {\cf18 float} log_r_claro = log(R_CLARO);\par
-64         {\cf18 float} log_r_escuro = log(R_ESCURO);\par
-65 \par
-66         {\cf19 if} (log_r_ldr > log_r_escuro) \{\par
-67             {\cf19 return} 0;\par
-68         \}\par
-69         {\cf19 if} (log_r_ldr < log_r_claro) \{\par
-70             {\cf19 return} 100;\par
-71         \}\par
-72         {\cf18 float} porcentagem = 100.0 * (log_r_escuro - log_r_ldr) / (log_r_escuro - log_r_claro);\par
-73         {\cf19 return} {\cf17 static_cast<}{\cf18 int}{\cf17 >}(porcentagem);\par
-74     \}\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 80                                     \{\par
+81         {\cf18 int} valor = lerValor();\par
+82         {\cf20 // F\'F3rmula do divisor de tens\'E3o: R_LDR = R_FIXO * (ADC_MAX - V_LDR) / V_LDR}\par
+83         {\cf20 // Onde V_LDR \'E9 valor lido do ADC (ADC_MAX \'E9 a tens\'E3o de refer\'EAncia)}\par
+84         {\cf18 float} r_ldr = R_FIXO * (ADC_MAX - valor) / valor;\par
+85         \par
+86         {\cf18 float} log_r_ldr = log(r_ldr);\par
+87         {\cf18 float} log_r_claro = log(R_CLARO);\par
+88         {\cf18 float} log_r_escuro = log(R_ESCURO);\par
+89 \par
+90         {\cf20 // Limita o valor para 0%}\par
+91         {\cf19 if} (log_r_ldr > log_r_escuro) \{\par
+92             {\cf19 return} 0;\par
+93         \}\par
+94         {\cf20 // Limita o valor para 100%}\par
+95         {\cf19 if} (log_r_ldr < log_r_claro) \{\par
+96             {\cf19 return} 100;\par
+97         \}\par
+98         \par
+99         {\cf20 // Mapeamento linear na escala logar\'EDtmica}\par
+100         {\cf18 float} porcentagem = 100.0 * (log_r_escuro - log_r_ldr) / (log_r_escuro - log_r_claro);\par
+101         \par
+102         {\cf19 return} {\cf17 static_cast<}{\cf18 int}{\cf17 >}(porcentagem);\par
+103     \}\par
 }
 Este \'E9 o diagrama das fun\'E7\'F5es utilizadas por essa fun\'E7\'E3o:{
 \pard\plain 
@@ -356,8 +364,8 @@ Esse \'E9 o diagrama das fun\'E7\'F5es que utilizam essa fun\'E7\'E3o:{
 {\b 
 int SensorLDR::lerValor (){\f2 [inline]}}}
 \par
-{\bkmkstart AAAAAAAAAI}
-{\bkmkend AAAAAAAAAI}
+{\bkmkstart AAAAAAAAAM}
+{\bkmkend AAAAAAAAAM}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -365,18 +373,24 @@ int SensorLDR::lerValor (){\f2 [inline]}}}
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 L\'EA o valor cru do ADC. }}\par
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-\par
+A leitura \'E9 feita diretamente do arquivo de dispositivo (sysfs) configurado no path.\par
 {{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs16\cgrid 
 Retorna\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
 Valor inteiro lido diretamente do ADC. \par
 }}}{
 \par
-\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 45                    \{\par
-46         std::ifstream file(path);\par
-47         {\cf18 int} valor;\par
-48         file >> valor;\par
-49         {\cf19 return} valor;\par
-50     \}\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 59                    \{\par
+60         std::ifstream file(path);\par
+61         {\cf18 int} valor = 0;\par
+62         {\cf19 if} (file.is_open()) \{\par
+63             file >> valor;\par
+64             file.close();\par
+65         \} {\cf19 else} \{\par
+66             {\cf20 // Em um sistema embarcado real, aqui deve haver um tratamento de erro mais robusto.}\par
+67             cerr << {\cf22 "Erro: Nao foi possivel abrir o arquivo ADC em "} << path << endl;\par
+68         \}\par
+69         {\cf19 return} valor;\par
+70     \}\par
 }
 Esse \'E9 o diagrama das fun\'E7\'F5es que utilizam essa fun\'E7\'E3o:{
 \pard\plain 
@@ -386,16 +400,16 @@ Esse \'E9 o diagrama das fun\'E7\'F5es que utilizam essa fun\'E7\'E3o:{
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 A documenta\'E7\'E3o para essa classe foi gerada a partir do seguinte arquivo:{\par
 \pard\plain \s121\fi-360\li720\widctlpar\jclisttab\tx720{\*\pn \pnlvlbody\ilvl0\ls2\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
-C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/{\b sensor_ldr.cpp}\par
+C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/{\b clienteUDP_sensor_ldr.cpp}\par
 }
 \pard\plain \sect\sbkpage
 \s1\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs36\kerning36\cgrid 
 Arquivos{\tc \v Arquivos}
 \par \pard\plain 
 \pard\plain \s2\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs28\kerning28\cgrid 
-Refer\'EAncia do Arquivo C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/sensor_ldr.cpp\par \pard\plain 
-{\tc\tcl2 \v C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/sensor_ldr.cpp}
-{\xe \v C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/sensor_ldr.cpp}
+Refer\'EAncia do Arquivo C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/clienteUDP_sensor_ldr.cpp\par \pard\plain 
+{\tc\tcl2 \v C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/clienteUDP_sensor_ldr.cpp}
+{\xe \v C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/clienteUDP_sensor_ldr.cpp}
 {\bkmkstart AAAAAAAAAA}
 {\bkmkend AAAAAAAAAA}
 \par
@@ -405,14 +419,17 @@ Implementa\'E7\'E3o de leitura de luminosidade utilizando um sensor LDR em um si
 {
 \pard\plain \s18\widctlpar\fs22\cgrid {\f2 #include <iostream>}\par
 {\f2 #include <fstream>}\par
-{\f2 #include <string>}\par
+{\f2 #include <cstring>}\par
 {\f2 #include <unistd.h>}\par
 {\f2 #include <cmath>}\par
+{\f2 #include <sys/socket.h>}\par
+{\f2 #include <arpa/inet.h>}\par
+{\f2 #include <string>}\par
 }
 {
-\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid Gr\'E1fico de depend\'EAncia de inclus\'F5es para sensor_ldr.cpp:{
+\pard\plain \s17\sa60\sb30\widctlpar\qj \fs22\cgrid Gr\'E1fico de depend\'EAncia de inclus\'F5es para clienteUDP_sensor_ldr.cpp:{
 \pard\plain 
-\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "sensor__ldr_8cpp__incl.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "cliente_u_d_p__sensor__ldr_8cpp__incl.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
 }
 \par
 }
@@ -425,6 +442,18 @@ Componentes\par
 class {\b SensorLDR}{
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid {\i {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 Classe para leitura e c\'E1lculo de luminosidade a partir de um LDR. }}\par}
+}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Defini\'E7\'F5es e Macros\par
+\pard\plain 
+
+{
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+#define {\b SERVER_IP}\~ "192.168.42.10"\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+#define {\b PORT}\~ 8080\par
+\pard\plain \s120\fi-360\li360\widctlpar\jclisttab\tx360{\*\pn \pnlvlbody\ilvl0\ls1\pnrnot0\pndec }\ls1\adjustright \fs20\cgrid 
+#define {\b BUFFER_SIZE}\~ 1024\par
 }
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Fun\'E7\'F5es\par
@@ -453,23 +482,64 @@ Autor\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa6
 Miguel Gomes \par
 }}{{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs16\cgrid 
 Data\par}\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
-03 de Setembro de 2025\par
-}}Este programa l\'EA valores do ADC exportados no sysfs e converte a resist\'EAncia do LDR em uma estimativa percentual de luminosidade (0% = escuro, 100% = claro). \par
-}}
+22 de Outubro de 2025{
+\par
+\pard\plain {\*\hyphen2\hyphlead2\hyphtrail2\hyphmax0}\nowidctlpar\cf0\hich\af0\langfe2052\dbch\af0\afs24\lang1081\loch\f0\fs24\lang1033{\listtext\pard\plain \hich\af3\dbch\af3\loch\f8 \'01\u9702\tab}\ilvl1\ls1 \li0\ri0\lin0\rin0\fi-360\tx720\li720\ri0\lin720\rin0\fi-360\kerning1\hich\af4\dbch\af5\rtlch \ltrch\loch\fs20
+Este programa l\'EA valores do ADC exportados no sysfs e converte a resist\'EAncia do LDR em uma estimativa percentual de luminosidade (0% = escuro, 100% = claro). O valor lido \'E9 ent\'E3o enviado via protocolo UDP (datagrama) para o servidor rodando no endere\'E7o SERVER_IP (Host Windows/WSL) na porta 8080. \par}
+}}}}
 {\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
 {\bkmkstart AAAAAAAAAB}
 {\bkmkend AAAAAAAAAB}
 \pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
+Defini\'E7\'F5es e macros\par
+\pard\plain 
+{\xe \v BUFFER_SIZE\:clienteUDP_sensor_ldr.cpp}
+{\xe \v clienteUDP_sensor_ldr.cpp\:BUFFER_SIZE}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+#define BUFFER_SIZE\~ 1024}}
+\par
+{\bkmkstart AAAAAAAAAC}
+{\bkmkend AAAAAAAAAC}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+}
+{\xe \v PORT\:clienteUDP_sensor_ldr.cpp}
+{\xe \v clienteUDP_sensor_ldr.cpp\:PORT}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+#define PORT\~ 8080}}
+\par
+{\bkmkstart AAAAAAAAAD}
+{\bkmkend AAAAAAAAAD}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+}
+{\xe \v SERVER_IP\:clienteUDP_sensor_ldr.cpp}
+{\xe \v clienteUDP_sensor_ldr.cpp\:SERVER_IP}
+\pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
+{\b 
+#define SERVER_IP\~ "192.168.42.10"}}
+\par
+{\bkmkstart AAAAAAAAAE}
+{\bkmkend AAAAAAAAAE}
+{
+\pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
+}
+{\pard\widctlpar\brdrb\brdrs\brdrw5\brsp20 \adjustright \par}
+{\bkmkstart AAAAAAAAAF}
+{\bkmkend AAAAAAAAAF}
+\pard\plain \s3\sb240\sa60\keepn\widctlpar\adjustright \b\f1\cgrid 
 Fun\'E7\'F5es\par
 \pard\plain 
-{\xe \v main\:sensor_ldr.cpp}
-{\xe \v sensor_ldr.cpp\:main}
+{\xe \v main\:clienteUDP_sensor_ldr.cpp}
+{\xe \v clienteUDP_sensor_ldr.cpp\:main}
 \pard\plain \s4\sb240\sa60\keepn\widctlpar\adjustright \b\f1\fs20\cgrid {
 {\b 
 int main ()}}
 \par
-{\bkmkstart AAAAAAAAAC}
-{\bkmkend AAAAAAAAAC}
+{\bkmkstart AAAAAAAAAG}
+{\bkmkend AAAAAAAAAG}
 {
 \pard\plain \s61\li360\sa60\sb30\qj\widctlpar\qj\adjustright \fs20\cgrid 
 \par
@@ -477,27 +547,122 @@ int main ()}}
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
 Fun\'E7\'E3o principal. }}\par
 {\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
-Cria um objeto {\b SensorLDR}, l\'EA continuamente a luminosidade e imprime na sa\'EDda padr\'E3o.\par
+Configura o socket UDP para enviar dados para o servidor 192.168.42.10:8080. Cria um objeto {\b SensorLDR}, l\'EA continuamente a luminosidade, converte o valor inteiro para string e envia o datagrama para o servidor a cada segundo.\par
 {{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs16\cgrid 
 Retorna\par}\pard\plain \s82\li720\widctlpar\ql\adjustright \fs20\cgrid {\s17 \sa60 \sb30
-0 em caso de execu\'E7\'E3o normal (embora nunca alcance o return devido ao loop). \par
-}}}{
+0 em caso de execu\'E7\'E3o normal. \par
+}}}{\s17\sa60\sb30\widctlpar\qj \fs22\cgrid 
+Loop principal de leitura e envio.\par
+Envia o datagrama UDP. {\par
+{\s5\sb90\sa30\keepn\widctlpar\adjustright \b\f1\fs16\cgrid 
+Par\'E2metros\par}
+\pard\plain \s81\li360\widctlpar\ql\adjustright \fs20\cgrid \trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i client_socket} \cell }{O descritor do socket. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i message} \cell }{O ponteiro para os dados a serem enviados. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i message_len} \cell }{O tamanho dos dados. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i 0} \cell }{Flags (geralmente 0 para UDP). \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i server_addr} \cell }{O endere\'E7o de destino. \cell }
+{\row }
+\trowd \trgaph108\trleft426\tblind426\trbrdrt\brdrs\brdrw10\brdrcf15 \trbrdrl\brdrs\brdrw10\brdrcf15 \trbrdrb\brdrs\brdrw10\brdrcf15 \trbrdrr\brdrs\brdrw10\brdrcf15 \trbrdrh\brdrs\brdrw10\brdrcf15 \trbrdrv\brdrs\brdrw10\brdrcf15 
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx2187
+\clvertalt\clbrdrt\brdrs\brdrw10\brdrcf15 \clbrdrl\brdrs\brdrw10\brdrcf15 \clbrdrb\brdrs\brdrw10\brdrcf15 \clbrdrr \brdrs\brdrw10\brdrcf15 \cltxlrtb \cellx8748
+\pard \widctlpar\intbl\adjustright
+{{\i sizeof(server_addr)} \cell }{O tamanho da estrutura de endere\'E7o.\cell }
+{\row }
+}
+}{
 \par
-\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 84            \{\par
-85     SensorLDR ldr({\cf22 "/sys/bus/iio/devices/iio:device0/in_voltage13_raw"});\par
-86 \par
-87     {\cf19 while} ({\cf17 true}) \{\par
-88         {\cf18 int} val = ldr.lerLuminosidadePercentual();\par
-89         std::cout << {\cf22 "Luminosidade: "} << val << {\cf22 "%"} << std::endl;\par
-90         sleep(1);\par
-91     \}\par
-92 \par
-93     {\cf19 return} 0;\par
-94 \}\par
+\pard\plain \s41\li360\widctlpar\adjustright \shading1000\cbpat8 \f2\fs16\cgrid 115            \{\par
+116     {\cf20 // Inicializa o sensor LDR com o caminho do arquivo ADC no sysfs da placa}\par
+117     SensorLDR ldr({\cf22 "/sys/bus/iio/devices/iio:device0/in_voltage13_raw"});\par
+118 \par
+119     {\cf18 int} client_socket;\par
+120     {\cf17 struct }sockaddr_in server_addr;\par
+121     {\cf18 char} buffer[BUFFER_SIZE];\par
+122     \par
+123     {\cf20 // 1. Criar o Socket}\par
+124     {\cf20 // AF_INET: Endere\'E7os IPv4}\par
+125     {\cf20 // SOCK_DGRAM: Protocolo UDP (datagrama, sem conex\'E3o)}\par
+126     client_socket = socket(AF_INET, SOCK_DGRAM, 0);\par
+127     {\cf19 if} (client_socket < 0) \{\par
+128         perror({\cf22 "Erro ao criar o socket UDP do cliente"});\par
+129         {\cf19 return} -1;\par
+130     \}\par
+131 \par
+132     {\cf20 // Limpar e configurar o endere\'E7o do servidor}\par
+133     memset(&server_addr, 0, {\cf17 sizeof}(server_addr));\par
+134     server_addr.sin_family = AF_INET;\par
+135     server_addr.sin_port = htons(PORT); {\cf20 // Converte a porta (8080) para a ordem de bytes de rede}\par
+136 \par
+137     {\cf20 // Converter endere\'E7o IP de string para formato bin\'E1rio}\par
+138     {\cf19 if} (inet_pton(AF_INET, SERVER_IP, &server_addr.sin_addr) <= 0) \{\par
+139         perror({\cf22 "Endereco IP invalido/nao suportado"});\par
+140         close(client_socket);\par
+141         {\cf19 return} -1;\par
+142     \}\par
+143     \par
+144     cout << {\cf22 "Socket UDP criado com sucesso."} << endl;\par
+145 \par
+149     {\cf19 while} ({\cf17 true}) \{\par
+150         memset(buffer, 0, BUFFER_SIZE);\par
+151 \par
+152         {\cf20 // O valor lido do sensor \'E9 um INT}\par
+153         {\cf18 int} val = ldr.lerLuminosidadePercentual();\par
+154 \par
+155         {\cf20 // CORRE\'C7\'C3O do erro: invalid conversion from 'int' to 'const char *'}\par
+156         {\cf20 // 1. Converte o valor inteiro (int) para uma string C++ (std::string)}\par
+157         {\cf18 string} val_str = to_string(val);\par
+158 \par
+159         {\cf20 // 2. Obt\'E9m o ponteiro C-style (const char*) da string para uso na fun\'E7\'E3o sendto()}\par
+160         {\cf17 const} {\cf18 char} *message = val_str.c_str(); \par
+161     \par
+162         {\cf20 // Calcula o tamanho da mensagem (apenas o tamanho da string, sem o terminador nulo)}\par
+163         {\cf18 size_t} message_len = val_str.length();\par
+164 \par
+174         ssize_t bytes_sent = sendto(client_socket, message, message_len, 0, ({\cf17 const} {\cf17 struct} sockaddr *)&server_addr, {\cf17 sizeof}(server_addr));\par
+175 \par
+176         {\cf19 if} (bytes_sent == -1) \{\par
+177             perror({\cf22 "Erro ao enviar datagrama"});\par
+178         \} \par
+179         {\cf19 else}\{\par
+180             cout << {\cf22 "Datagrama enviado ("} << bytes_sent << {\cf22 " bytes) para "} << SERVER_IP << {\cf22 ":"} << PORT << endl;\par
+181             cout << {\cf22 "Luminosidade: "} << message << {\cf22 "%"} << std::endl;\par
+182             sleep(1); {\cf20 // Espera 1 segundo antes da pr\'F3xima leitura/envio}\par
+183         \}\par
+184     \}\par
+185     {\cf20 // O loop \'E9 infinito, o c\'F3digo abaixo s\'F3 seria executado em caso de interrup\'E7\'E3o}\par
+186     {\cf20 // 4. Fechar o Socket}\par
+187     close(client_socket);\par
+188     cout << {\cf22 "Socket fechado. Cliente UDP encerrado."} << endl;\par
+189     {\cf19 return} 0;\par
+190 \}\par
 }
 Este \'E9 o diagrama das fun\'E7\'F5es utilizadas por essa fun\'E7\'E3o:{
 \pard\plain 
-\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
+\par\pard \qc {\field\flddirty {\*\fldinst INCLUDEPICTURE "cliente_u_d_p__sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png" \\d \\*MERGEFORMAT}{\fldrslt IMAGE}}\par
 }
 }
 

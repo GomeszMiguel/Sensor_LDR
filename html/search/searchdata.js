@@ -1,9 +1,10 @@
 var indexSectionsWithContent =
 {
-  0: "lms",
+  0: "bclmps",
   1: "s",
-  2: "s",
-  3: "lms"
+  2: "c",
+  3: "lms",
+  4: "bps"
 };
 
 var indexSectionNames =
@@ -11,7 +12,8 @@ var indexSectionNames =
   0: "all",
   1: "classes",
   2: "files",
-  3: "functions"
+  3: "functions",
+  4: "defines"
 };
 
 var indexSectionLabels =
@@ -19,6 +21,7 @@ var indexSectionLabels =
   0: "Todos",
   1: "Classes",
   2: "Arquivos",
-  3: "Funções"
+  3: "Funções",
+  4: "Definições e Macros"
 };
 

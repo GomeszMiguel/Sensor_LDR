@@ -1,0 +1,329 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="pt-BR">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=11"/>
+<meta name="generator" content="Doxygen 1.14.0"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>ClienteUDP_Sensor_LDR: Referência do Arquivo C:/Users/carlo/OneDrive/Documentos/ELETRONICA_IME/PROG_APLICADA/codigo_doxygen/clienteUDP_sensor_ldr.cpp</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<script type="text/javascript" src="clipboard.js"></script>
+<link href="navtree.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="navtreedata.js"></script>
+<script type="text/javascript" src="navtree.js"></script>
+<script type="text/javascript" src="cookie.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr id="projectrow">
+  <td id="projectlogo"><img alt="Logo" src="ime.png"/></td>
+  <td id="projectalign">
+   <div id="projectname">ClienteUDP_Sensor_LDR
+   </div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- Gerado por Doxygen 1.14.0 -->
+<script type="text/javascript">
+var searchBox = new SearchBox("searchBox", "search/",'.html');
+</script>
+<script type="text/javascript">
+$(function() { codefold.init(); });
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+$(function() {
+  initMenu('',true,false,'search.php','Busca',true);
+  $(function() { init_search(); });
+});
+</script>
+<div id="main-nav"></div>
+</div><!-- top -->
+<div id="side-nav" class="ui-resizable side-nav-resizable">
+  <div id="nav-tree">
+    <div id="nav-tree-contents">
+      <div id="nav-sync" class="sync"></div>
+    </div>
+  </div>
+  <div id="splitbar" style="-moz-user-select:none;" 
+       class="ui-resizable-handle">
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){initNavTree('cliente_u_d_p__sensor__ldr_8cpp.html','',''); });
+</script>
+<div id="container">
+<div id="doc-content">
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<div id="MSearchResults">
+<div class="SRPage">
+<div id="SRIndex">
+<div id="SRResults"></div>
+<div class="SRStatus" id="Loading">Carregando...</div>
+<div class="SRStatus" id="Searching">Procurando...</div>
+<div class="SRStatus" id="NoMatches">Nenhuma entrada encontrado</div>
+</div>
+</div>
+</div>
+</div>
+
+<div class="header">
+  <div class="headertitle"><div class="title">Referência do Arquivo clienteUDP_sensor_ldr.cpp</div></div>
+</div><!--header-->
+<div class="contents">
+
+<p>Implementação de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado.  
+<a href="#details">Mais...</a></p>
+<div class="textblock"><code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;unistd.h&gt;</code><br />
+<code>#include &lt;cmath&gt;</code><br />
+<code>#include &lt;sys/socket.h&gt;</code><br />
+<code>#include &lt;arpa/inet.h&gt;</code><br />
+<code>#include &lt;string&gt;</code><br />
+</div><div class="textblock"><div class="dynheader">
+Gráfico de dependência de inclusões para clienteUDP_sensor_ldr.cpp:</div>
+<div class="dyncontent">
+<div class="center"><img src="cliente_u_d_p__sensor__ldr_8cpp__incl.png" border="0" usemap="#a_c_1_2_users_2carlo_2_one_drive_2_documentos_2_e_l_e_t_r_o_n_i_c_a___i_m_e_2_p_r_o_g___a_p_l_i_c_a_d_a_2codigo__doxygen_2cliente_u_d_p__sensor__ldr_8cpp" loading="lazy" alt=""/></div>
+<map name="a_c_1_2_users_2carlo_2_one_drive_2_documentos_2_e_l_e_t_r_o_n_i_c_a___i_m_e_2_p_r_o_g___a_p_l_i_c_a_d_a_2codigo__doxygen_2cliente_u_d_p__sensor__ldr_8cpp" id="a_c_1_2_users_2carlo_2_one_drive_2_documentos_2_e_l_e_t_r_o_n_i_c_a___i_m_e_2_p_r_o_g___a_p_l_i_c_a_d_a_2codigo__doxygen_2cliente_u_d_p__sensor__ldr_8cpp">
+<area shape="rect" title="Implementação de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado." alt="" coords="245,5,456,96"/>
+<area shape="rect" title=" " alt="" coords="5,144,77,171"/>
+<area shape="poly" title=" " alt="" coords="245,90,92,142,91,136,243,85"/>
+<area shape="rect" title=" " alt="" coords="100,144,166,171"/>
+<area shape="poly" title=" " alt="" coords="259,99,174,139,172,134,256,94"/>
+<area shape="rect" title=" " alt="" coords="190,144,250,171"/>
+<area shape="poly" title=" " alt="" coords="296,98,248,137,245,132,293,94"/>
+<area shape="rect" title=" " alt="" coords="274,144,341,171"/>
+<area shape="poly" title=" " alt="" coords="335,97,321,131,316,129,330,95"/>
+<area shape="rect" title=" " alt="" coords="366,144,423,171"/>
+<area shape="poly" title=" " alt="" coords="371,95,386,129,381,131,367,97"/>
+<area shape="rect" title=" " alt="" coords="448,144,544,171"/>
+<area shape="poly" title=" " alt="" coords="414,94,468,133,465,137,411,99"/>
+<area shape="rect" title=" " alt="" coords="568,144,650,171"/>
+<area shape="poly" title=" " alt="" coords="458,92,565,135,563,140,456,97"/>
+<area shape="rect" title=" " alt="" coords="674,144,728,171"/>
+<area shape="poly" title=" " alt="" coords="457,80,660,141,659,146,456,85"/>
+</map>
+</div>
+</div><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-nested-classes" class="groupheader"><a id="nested-classes" name="nested-classes"></a>
+Componentes</h2></td></tr>
+<tr class="memitem:SensorLDR" id="r_SensorLDR"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_sensor_l_d_r.html">SensorLDR</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">Classe para leitura e cálculo de luminosidade a partir de um LDR.  <a href="class_sensor_l_d_r.html#details">Mais...</a><br /></td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-define-members" class="groupheader"><a id="define-members" name="define-members"></a>
+Definições e Macros</h2></td></tr>
+<tr class="memitem:a28d06fc286f28044ed3380969700ff3f" id="r_a28d06fc286f28044ed3380969700ff3f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a28d06fc286f28044ed3380969700ff3f">SERVER_IP</a>&#160;&#160;&#160;&quot;192.168.42.10&quot;</td></tr>
+<tr class="memitem:a614217d263be1fb1a5f76e2ff7be19a2" id="r_a614217d263be1fb1a5f76e2ff7be19a2"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a614217d263be1fb1a5f76e2ff7be19a2">PORT</a>&#160;&#160;&#160;8080</td></tr>
+<tr class="memitem:a6b20d41d6252e9871430c242cb1a56e7" id="r_a6b20d41d6252e9871430c242cb1a56e7"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>&#160;&#160;&#160;1024</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 id="header-func-members" class="groupheader"><a id="func-members" name="func-members"></a>
+Funções</h2></td></tr>
+<tr class="memitem:ae66f6b31b5ad750f1fe042a706a4e3d4" id="r_ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="#ae66f6b31b5ad750f1fe042a706a4e3d4">main</a> ()</td></tr>
+<tr class="memdesc:ae66f6b31b5ad750f1fe042a706a4e3d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">Função principal.  <br /></td></tr>
+</table>
+<a name="details" id="details"></a><h2 id="header-details" class="groupheader">Descrição detalhada</h2>
+<div class="textblock"><p>Implementação de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado. </p>
+<dl class="section author"><dt>Autor</dt><dd>Miguel Gomes </dd></dl>
+<dl class="section date"><dt>Data</dt><dd>22 de Outubro de 2025<ul>
+<li>Este programa lê valores do ADC exportados no sysfs e converte a resistência do LDR em uma estimativa percentual de luminosidade (0% = escuro, 100% = claro). O valor lido é então enviado via protocolo UDP (datagrama) para o servidor rodando no endereço SERVER_IP (Host Windows/WSL) na porta 8080. </li>
+</ul>
+</dd></dl>
+</div><a name="doc-define-members" id="doc-define-members"></a><h2 id="header-doc-define-members" class="groupheader">Definições e macros</h2>
+<a id="a6b20d41d6252e9871430c242cb1a56e7" name="a6b20d41d6252e9871430c242cb1a56e7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b20d41d6252e9871430c242cb1a56e7">&#9670;&#160;</a></span>BUFFER_SIZE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define BUFFER_SIZE&#160;&#160;&#160;1024</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a614217d263be1fb1a5f76e2ff7be19a2" name="a614217d263be1fb1a5f76e2ff7be19a2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a614217d263be1fb1a5f76e2ff7be19a2">&#9670;&#160;</a></span>PORT</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define PORT&#160;&#160;&#160;8080</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a28d06fc286f28044ed3380969700ff3f" name="a28d06fc286f28044ed3380969700ff3f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28d06fc286f28044ed3380969700ff3f">&#9670;&#160;</a></span>SERVER_IP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define SERVER_IP&#160;&#160;&#160;&quot;192.168.42.10&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a name="doc-func-members" id="doc-func-members"></a><h2 id="header-doc-func-members" class="groupheader">Funções</h2>
+<a id="ae66f6b31b5ad750f1fe042a706a4e3d4" name="ae66f6b31b5ad750f1fe042a706a4e3d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae66f6b31b5ad750f1fe042a706a4e3d4">&#9670;&#160;</a></span>main()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int main </td>
+          <td>(</td>
+          <td class="paramname"><span class="paramname"><em></em></span></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Função principal. </p>
+<p>Configura o socket UDP para enviar dados para o servidor 192.168.42.10:8080. Cria um objeto <a class="el" href="class_sensor_l_d_r.html" title="Classe para leitura e cálculo de luminosidade a partir de um LDR.">SensorLDR</a>, lê continuamente a luminosidade, converte o valor inteiro para string e envia o datagrama para o servidor a cada segundo.</p>
+<dl class="section return"><dt>Retorna</dt><dd>0 em caso de execução normal. </dd></dl>
+<p>Loop principal de leitura e envio.</p>
+<p>Envia o datagrama UDP. </p><dl class="params"><dt>Parâmetros</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">client_socket</td><td>O descritor do socket. </td></tr>
+    <tr><td class="paramname">message</td><td>O ponteiro para os dados a serem enviados. </td></tr>
+    <tr><td class="paramname">message_len</td><td>O tamanho dos dados. </td></tr>
+    <tr><td class="paramname">0</td><td>Flags (geralmente 0 para UDP). </td></tr>
+    <tr><td class="paramname">server_addr</td><td>O endereço de destino. </td></tr>
+    <tr><td class="paramname">sizeof(server_addr)</td><td>O tamanho da estrutura de endereço.</td></tr>
+  </table>
+  </dd>
+</dl>
+<div class="fragment"><div class="line"><span class="lineno">  115</span>           {</div>
+<div class="line"><span class="lineno">  116</span>    <span class="comment">// Inicializa o sensor LDR com o caminho do arquivo ADC no sysfs da placa</span></div>
+<div class="line"><span class="lineno">  117</span>    <a class="code hl_class" href="class_sensor_l_d_r.html">SensorLDR</a> ldr(<span class="stringliteral">&quot;/sys/bus/iio/devices/iio:device0/in_voltage13_raw&quot;</span>);</div>
+<div class="line"><span class="lineno">  118</span> </div>
+<div class="line"><span class="lineno">  119</span>    <span class="keywordtype">int</span> client_socket;</div>
+<div class="line"><span class="lineno">  120</span>    <span class="keyword">struct </span>sockaddr_in server_addr;</div>
+<div class="line"><span class="lineno">  121</span>    <span class="keywordtype">char</span> buffer[<a class="code hl_define" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>];</div>
+<div class="line"><span class="lineno">  122</span>    </div>
+<div class="line"><span class="lineno">  123</span>    <span class="comment">// 1. Criar o Socket</span></div>
+<div class="line"><span class="lineno">  124</span>    <span class="comment">// AF_INET: Endereços IPv4</span></div>
+<div class="line"><span class="lineno">  125</span>    <span class="comment">// SOCK_DGRAM: Protocolo UDP (datagrama, sem conexão)</span></div>
+<div class="line"><span class="lineno">  126</span>    client_socket = socket(AF_INET, SOCK_DGRAM, 0);</div>
+<div class="line"><span class="lineno">  127</span>    <span class="keywordflow">if</span> (client_socket &lt; 0) {</div>
+<div class="line"><span class="lineno">  128</span>        perror(<span class="stringliteral">&quot;Erro ao criar o socket UDP do cliente&quot;</span>);</div>
+<div class="line"><span class="lineno">  129</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  130</span>    }</div>
+<div class="line"><span class="lineno">  131</span> </div>
+<div class="line"><span class="lineno">  132</span>    <span class="comment">// Limpar e configurar o endereço do servidor</span></div>
+<div class="line"><span class="lineno">  133</span>    memset(&amp;server_addr, 0, <span class="keyword">sizeof</span>(server_addr));</div>
+<div class="line"><span class="lineno">  134</span>    server_addr.sin_family = AF_INET;</div>
+<div class="line"><span class="lineno">  135</span>    server_addr.sin_port = htons(<a class="code hl_define" href="#a614217d263be1fb1a5f76e2ff7be19a2">PORT</a>); <span class="comment">// Converte a porta (8080) para a ordem de bytes de rede</span></div>
+<div class="line"><span class="lineno">  136</span> </div>
+<div class="line"><span class="lineno">  137</span>    <span class="comment">// Converter endereço IP de string para formato binário</span></div>
+<div class="line"><span class="lineno">  138</span>    <span class="keywordflow">if</span> (inet_pton(AF_INET, <a class="code hl_define" href="#a28d06fc286f28044ed3380969700ff3f">SERVER_IP</a>, &amp;server_addr.sin_addr) &lt;= 0) {</div>
+<div class="line"><span class="lineno">  139</span>        perror(<span class="stringliteral">&quot;Endereco IP invalido/nao suportado&quot;</span>);</div>
+<div class="line"><span class="lineno">  140</span>        close(client_socket);</div>
+<div class="line"><span class="lineno">  141</span>        <span class="keywordflow">return</span> -1;</div>
+<div class="line"><span class="lineno">  142</span>    }</div>
+<div class="line"><span class="lineno">  143</span>    </div>
+<div class="line"><span class="lineno">  144</span>    cout &lt;&lt; <span class="stringliteral">&quot;Socket UDP criado com sucesso.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  145</span></div>
+<div class="line"><span class="lineno">  149</span>    <span class="keywordflow">while</span> (<span class="keyword">true</span>) {</div>
+<div class="line"><span class="lineno">  150</span>        memset(buffer, 0, <a class="code hl_define" href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a>);</div>
+<div class="line"><span class="lineno">  151</span> </div>
+<div class="line"><span class="lineno">  152</span>        <span class="comment">// O valor lido do sensor é um INT</span></div>
+<div class="line"><span class="lineno">  153</span>        <span class="keywordtype">int</span> val = ldr.lerLuminosidadePercentual();</div>
+<div class="line"><span class="lineno">  154</span> </div>
+<div class="line"><span class="lineno">  155</span>        <span class="comment">// CORREÇÃO do erro: invalid conversion from &#39;int&#39; to &#39;const char *&#39;</span></div>
+<div class="line"><span class="lineno">  156</span>        <span class="comment">// 1. Converte o valor inteiro (int) para uma string C++ (std::string)</span></div>
+<div class="line"><span class="lineno">  157</span>        <span class="keywordtype">string</span> val_str = to_string(val);</div>
+<div class="line"><span class="lineno">  158</span> </div>
+<div class="line"><span class="lineno">  159</span>        <span class="comment">// 2. Obtém o ponteiro C-style (const char*) da string para uso na função sendto()</span></div>
+<div class="line"><span class="lineno">  160</span>        <span class="keyword">const</span> <span class="keywordtype">char</span> *message = val_str.c_str(); </div>
+<div class="line"><span class="lineno">  161</span>    </div>
+<div class="line"><span class="lineno">  162</span>        <span class="comment">// Calcula o tamanho da mensagem (apenas o tamanho da string, sem o terminador nulo)</span></div>
+<div class="line"><span class="lineno">  163</span>        <span class="keywordtype">size_t</span> message_len = val_str.length();</div>
+<div class="line"><span class="lineno">  164</span></div>
+<div class="line"><span class="lineno">  174</span>        ssize_t bytes_sent = sendto(client_socket, message, message_len, 0, (<span class="keyword">const</span> <span class="keyword">struct</span> sockaddr *)&amp;server_addr, <span class="keyword">sizeof</span>(server_addr));</div>
+<div class="line"><span class="lineno">  175</span> </div>
+<div class="line"><span class="lineno">  176</span>        <span class="keywordflow">if</span> (bytes_sent == -1) {</div>
+<div class="line"><span class="lineno">  177</span>            perror(<span class="stringliteral">&quot;Erro ao enviar datagrama&quot;</span>);</div>
+<div class="line"><span class="lineno">  178</span>        } </div>
+<div class="line"><span class="lineno">  179</span>        <span class="keywordflow">else</span>{</div>
+<div class="line"><span class="lineno">  180</span>            cout &lt;&lt; <span class="stringliteral">&quot;Datagrama enviado (&quot;</span> &lt;&lt; bytes_sent &lt;&lt; <span class="stringliteral">&quot; bytes) para &quot;</span> &lt;&lt; <a class="code hl_define" href="#a28d06fc286f28044ed3380969700ff3f">SERVER_IP</a> &lt;&lt; <span class="stringliteral">&quot;:&quot;</span> &lt;&lt; <a class="code hl_define" href="#a614217d263be1fb1a5f76e2ff7be19a2">PORT</a> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  181</span>            cout &lt;&lt; <span class="stringliteral">&quot;Luminosidade: &quot;</span> &lt;&lt; message &lt;&lt; <span class="stringliteral">&quot;%&quot;</span> &lt;&lt; std::endl;</div>
+<div class="line"><span class="lineno">  182</span>            sleep(1); <span class="comment">// Espera 1 segundo antes da próxima leitura/envio</span></div>
+<div class="line"><span class="lineno">  183</span>        }</div>
+<div class="line"><span class="lineno">  184</span>    }</div>
+<div class="line"><span class="lineno">  185</span>    <span class="comment">// O loop é infinito, o código abaixo só seria executado em caso de interrupção</span></div>
+<div class="line"><span class="lineno">  186</span>    <span class="comment">// 4. Fechar o Socket</span></div>
+<div class="line"><span class="lineno">  187</span>    close(client_socket);</div>
+<div class="line"><span class="lineno">  188</span>    cout &lt;&lt; <span class="stringliteral">&quot;Socket fechado. Cliente UDP encerrado.&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><span class="lineno">  189</span>    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><span class="lineno">  190</span>}</div>
+<div class="ttc" id="aclass_sensor_l_d_r_html"><div class="ttname"><a href="class_sensor_l_d_r.html">SensorLDR</a></div><div class="ttdoc">Classe para leitura e cálculo de luminosidade a partir de um LDR.</div><div class="ttdef"><b>Definição</b> clienteUDP_sensor_ldr.cpp:35</div></div>
+<div class="ttc" id="acliente_u_d_p__sensor__ldr_8cpp_html_a28d06fc286f28044ed3380969700ff3f"><div class="ttname"><a href="#a28d06fc286f28044ed3380969700ff3f">SERVER_IP</a></div><div class="ttdeci">#define SERVER_IP</div><div class="ttdef"><b>Definição</b> clienteUDP_sensor_ldr.cpp:23</div></div>
+<div class="ttc" id="acliente_u_d_p__sensor__ldr_8cpp_html_a614217d263be1fb1a5f76e2ff7be19a2"><div class="ttname"><a href="#a614217d263be1fb1a5f76e2ff7be19a2">PORT</a></div><div class="ttdeci">#define PORT</div><div class="ttdef"><b>Definição</b> clienteUDP_sensor_ldr.cpp:24</div></div>
+<div class="ttc" id="acliente_u_d_p__sensor__ldr_8cpp_html_a6b20d41d6252e9871430c242cb1a56e7"><div class="ttname"><a href="#a6b20d41d6252e9871430c242cb1a56e7">BUFFER_SIZE</a></div><div class="ttdeci">#define BUFFER_SIZE</div><div class="ttdef"><b>Definição</b> clienteUDP_sensor_ldr.cpp:25</div></div>
+</div><!-- fragment --><div class="dynheader">
+Este é o diagrama das funções utilizadas por essa função:</div>
+<div class="dyncontent">
+<div class="center"><img src="cliente_u_d_p__sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph.png" border="0" usemap="#acliente_u_d_p__sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" loading="lazy" alt=""/></div>
+<map name="acliente_u_d_p__sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph" id="acliente_u_d_p__sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph">
+<area shape="rect" title="Função principal." alt="" coords="5,13,55,40"/>
+<area shape="rect" href="class_sensor_l_d_r.html#a9da6791dcab08a2bc8aa08751cb7abe2" title="Calcula a luminosidade em percentual com base no valor lido do ADC." alt="" coords="103,5,294,48"/>
+<area shape="poly" title=" " alt="" coords="55,24,87,24,87,29,55,29"/>
+<area shape="rect" href="class_sensor_l_d_r.html#aa293a835a0aba71884e116af2db215f8" title="Lê o valor cru do ADC." alt="" coords="342,13,482,40"/>
+<area shape="poly" title=" " alt="" coords="294,24,326,24,326,29,294,29"/>
+</map>
+</div>
+
+</div>
+</div>
+</div><!-- contents -->
+</div><!-- doc-content -->
+<div id="page-nav" class="page-nav-panel">
+<div id="page-nav-resize-handle"></div>
+<div id="page-nav-tree">
+<div id="page-nav-contents">
+</div><!-- page-nav-contents -->
+</div><!-- page-nav-tree -->
+</div><!-- page-nav -->
+</div><!-- container -->
+<!-- start footer part -->
+<div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
+  <ul>
+    <li class="navelem"><a href="dir_3cb6e0ca0149ee4fcf05e71bc8369315.html">codigo_doxygen</a></li><li class="navelem"><a href="cliente_u_d_p__sensor__ldr_8cpp.html">clienteUDP_sensor_ldr.cpp</a></li>
+    <li class="footer">Gerado por <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.14.0 </li>
+  </ul>
+</div>
+</body>
+</html>

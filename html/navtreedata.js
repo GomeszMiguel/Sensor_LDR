@@ -24,7 +24,7 @@
 */
 var NAVTREE =
 [
-  [ "Sensor_LDR", "index.html", [
+  [ "ClienteUDP_Sensor_LDR", "index.html", [
     [ "Classes", "annotated.html", [
       [ "Lista de Classes", "annotated.html", "annotated_dup" ],
       [ "Índice dos Componentes", "classes.html", null ],
@@ -37,7 +37,8 @@ var NAVTREE =
       [ "Lista de Arquivos", "files.html", "files_dup" ],
       [ "Membros dos Arquivos", "globals.html", [
         [ "Todos", "globals.html", null ],
-        [ "Funções", "globals_func.html", null ]
+        [ "Funções", "globals_func.html", null ],
+        [ "Definições e Macros", "globals_defs.html", null ]
       ] ]
     ] ]
   ] ]

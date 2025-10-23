@@ -29,7 +29,7 @@ int \mbox{\hyperlink{class_sensor_l_d_r_a9da6791dcab08a2bc8aa08751cb7abe2}{ler\+
 \doxysubsection{Descrição detalhada}
 Classe para leitura e cálculo de luminosidade a partir de um LDR. 
 
-A classe realiza a leitura de valores crus do ADC, calcula a resistência do LDR e mapeia para uma escala percentual de luminosidade. 
+A classe realiza a leitura de valores crus do ADC, calcula a resistência do LDR e mapeia para uma escala percentual de luminosidade, utilizando a lei de potência que relaciona a resistência com a intensidade luminosa (logarítmica). 
 
 \label{doc-constructors}
 \Hypertarget{class_sensor_l_d_r_doc-constructors}
@@ -46,14 +46,14 @@ Construtor da classe \doxylink{class_sensor_l_d_r}{Sensor\+LDR}.
 
 
 \begin{DoxyParams}{Parâmetros}
-{\em adc\+Path} & Caminho para o arquivo sysfs do ADC (ex.\+: {\ttfamily /sys/bus/iio/devices/...}). \\
+{\em adc\+Path} & Caminho para o arquivo sysfs do ADC. \\
 \hline
 \end{DoxyParams}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00037\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00038\ \ \ \ \ \ \ \ \ path\ =\ adcPath;}
-\DoxyCodeLine{00039\ \ \ \ \ \}}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ path\ =\ adcPath;}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -71,29 +71,37 @@ int Sensor\+LDR\+::ler\+Luminosidade\+Percentual (\begin{DoxyParamCaption}{}{}\e
 
 Calcula a luminosidade em percentual com base no valor lido do ADC. 
 
-O cálculo utiliza a relação logarítmica entre a resistência do LDR e a intensidade luminosa.
+O cálculo utiliza a fórmula do divisor de tensão para obter a R\+\_\+\+LDR, e então mapeia a resistência (em escala logarítmica) para uma porcentagem (0-\/100).
 
 \begin{DoxyReturn}{Retorna}
 Luminosidade percentual (0 a 100). 
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor\ =\ \mbox{\hyperlink{class_sensor_l_d_r_aa293a835a0aba71884e116af2db215f8}{lerValor}}();}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ r\_ldr\ =\ R\_FIXO*(ADC\_MAX\ -\/\ valor)/valor;}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_ldr\ =\ log(r\_ldr);}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_claro\ =\ log(R\_CLARO);}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_escuro\ =\ log(R\_ESCURO);}
-\DoxyCodeLine{00065\ }
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ >\ log\_r\_escuro)\ \{}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ <\ log\_r\_claro)\ \{}
-\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 100;}
-\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ porcentagem\ =\ 100.0\ *\ (log\_r\_escuro\ -\/\ log\_r\_ldr)\ /\ (log\_r\_escuro\ -\/\ log\_r\_claro);}
-\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(porcentagem);}
-\DoxyCodeLine{00074\ \ \ \ \ \}}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor\ =\ \mbox{\hyperlink{class_sensor_l_d_r_aa293a835a0aba71884e116af2db215f8}{lerValor}}();}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fórmula\ do\ divisor\ de\ tensão:\ R\_LDR\ =\ R\_FIXO\ *\ (ADC\_MAX\ -\/\ V\_LDR)\ /\ V\_LDR}}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Onde\ V\_LDR\ é\ valor\ lido\ do\ ADC\ (ADC\_MAX\ é\ a\ tensão\ de\ referência)}}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ r\_ldr\ =\ R\_FIXO\ *\ (ADC\_MAX\ -\/\ valor)\ /\ valor;}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_ldr\ =\ log(r\_ldr);}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_claro\ =\ log(R\_CLARO);}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_escuro\ =\ log(R\_ESCURO);}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Limita\ o\ valor\ para\ 0\%}}
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ >\ log\_r\_escuro)\ \{}
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Limita\ o\ valor\ para\ 100\%}}
+\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ <\ log\_r\_claro)\ \{}
+\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 100;}
+\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mapeamento\ linear\ na\ escala\ logarítmica}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ porcentagem\ =\ 100.0\ *\ (log\_r\_escuro\ -\/\ log\_r\_ldr)\ /\ (log\_r\_escuro\ -\/\ log\_r\_claro);}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(porcentagem);}
+\DoxyCodeLine{00103\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Este é o diagrama das funções utilizadas por essa função\+:
@@ -122,17 +130,25 @@ int Sensor\+LDR\+::ler\+Valor (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption
 
 Lê o valor cru do ADC. 
 
+A leitura é feita diretamente do arquivo de dispositivo (sysfs) configurado no path.
+
 \begin{DoxyReturn}{Retorna}
 Valor inteiro lido diretamente do ADC. 
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00045\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00046\ \ \ \ \ \ \ \ \ std::ifstream\ file(path);}
-\DoxyCodeLine{00047\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor;}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ file\ >>\ valor;}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ valor;}
-\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ std::ifstream\ file(path);}
+\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor\ =\ 0;}
+\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ file\ >>\ valor;}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Em\ um\ sistema\ embarcado\ real,\ aqui\ deve\ haver\ um\ tratamento\ de\ erro\ mais\ robusto.}}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Erro:\ Nao\ foi\ possivel\ abrir\ o\ arquivo\ ADC\ em\ "{}}\ <<\ path\ <<\ endl;}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ valor;}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Esse é o diagrama das funções que utilizam essa função\+:
@@ -147,4 +163,4 @@ Esse é o diagrama das funções que utilizam essa função\+:
 
 A documentação para essa classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
 \item 
-C\+:/\+Users/carlo/\+One\+Drive/\+Documentos/\+ELETRONICA\+\_\+\+IME/\+PROG\+\_\+\+APLICADA/codigo\+\_\+doxygen/\mbox{\hyperlink{sensor__ldr_8cpp}{sensor\+\_\+ldr.\+cpp}}\end{DoxyCompactItemize}
+C\+:/\+Users/carlo/\+One\+Drive/\+Documentos/\+ELETRONICA\+\_\+\+IME/\+PROG\+\_\+\+APLICADA/codigo\+\_\+doxygen/\mbox{\hyperlink{cliente_u_d_p__sensor__ldr_8cpp}{cliente\+UDP\+\_\+sensor\+\_\+ldr.\+cpp}}\end{DoxyCompactItemize}
