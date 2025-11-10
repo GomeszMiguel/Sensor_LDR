@@ -205,3 +205,42 @@ Esta seção demonstra o comportamento esperado do programa **`clienteUDP_sensor
 O Cliente lê o valor de luminosidade, converte-o para um formato de texto (string) e o envia a cada 1 segundo (conforme o `sleep(1)` no código).
 
 ![Execução de um código servidor de recebimento](./assets/demostração_cliente_servidor_udp.png)
+
+### 8. Módulo de Monitoramento e Visualização (Servidor UDP em Python)
+
+O Servidor de Recebimento, implementado em Python no arquivo `ServidorUDP_sensor_ldr.py`, é responsável por receber os datagramas UDP da Placa Embarcada e exibir os dados em uma Interface Gráfica do Usuário (GUI) em tempo real.
+
+O projeto utiliza o módulo **Tkinter** para a construção da GUI e a biblioteca **Matplotlib** para gerar o gráfico de histórico.
+
+#### 8.1. Estrutura do Servidor (`ServidorUDP_sensor_ldr.py`)
+
+O código Python é composto por duas classes principais:
+
+* **`iniciar_servidor_udp()` (Função Principal):**
+    * **Descrição:** Esta função isolada configura o socket UDP, associa-o ao endereço e porta definidos (`192.168.42.10:8080`) e é executada em uma *thread* separada.
+    * **Funcionalidade:** Ele aguarda pacotes UDP usando `recvfrom()`, recebe a *string* de luminosidade, a converte para um objeto JSON enriquecido (com *timestamp*) e a coloca em uma fila assíncrona (`queue`) segura.
+* **`App` (Classe GUI Principal):**
+    * **Descrição:** Herda de `tk.Tk` e gerencia a janela principal, o gráfico de histórico e o *status* de alerta.
+    * **Funcionalidade:** Utiliza o método `after()` do Tkinter para monitorar a fila (`queue`) assíncrona. Quando um dado chega na fila, o método `processar_dados_da_fila()` é chamado, atualizando o valor na tela, o gráfico e verificando o limiar de alarme.
+
+#### 8.2. Vantagens do Python para o Servidor
+
+A escolha do Python para a aplicação Servidora oferece flexibilidade e velocidade de prototipagem para a GUI:
+
+* **GUI Rápida:** O Tkinter permite a construção rápida da interface sem a necessidade de compilação cruzada.
+* **Assincronismo Simplificado:** O uso de *threads* (para o recebimento UDP) e a fila de dados garantem que o servidor possa receber dados continuamente sem travar a interface gráfica (que é single-threaded).
+
+---
+
+### 9. Exemplo de Execução: Monitoramento Gráfico (Host Windows)
+
+Esta seção demonstra o comportamento esperado do programa Servidor Python (`ServidorUDP_sensor_ldr.py`) ao receber dados do Cliente C++ na Placa Embarcada.
+
+#### Fluxo de Dados
+
+1.  O Cliente C++ (Placa Embarcada) lê o LDR e envia um pacote UDP com o valor de luminosidade (ex: "75").
+2.  O Servidor Python (Host Windows) recebe o datagrama na porta `8080`.
+3.  O valor "75" é atualizado na GUI do Servidor, e o gráfico de histórico é plotado em tempo real.
+4.  Se o valor de luminosidade ultrapassar um limite (por exemplo, 80%), o sistema exibe um **Alerta de Violação de Carga**.
+
+![Interface gráfica do servidor python exibindo o monitoramento de luminosidade](./assets/monitoramento_grafico_servidor_python.png)
