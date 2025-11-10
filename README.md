@@ -230,8 +230,6 @@ A escolha do Python para a aplicação Servidora oferece flexibilidade e velocid
 * **GUI Rápida:** O Tkinter permite a construção rápida da interface sem a necessidade de compilação cruzada.
 * **Assincronismo Simplificado:** O uso de *threads* (para o recebimento UDP) e a fila de dados garantem que o servidor possa receber dados continuamente sem travar a interface gráfica (que é single-threaded).
 
----
-
 ### 9. Exemplo de Execução: Monitoramento Gráfico (Host Windows)
 
 Esta seção demonstra o comportamento esperado do programa Servidor Python (`ServidorUDP_sensor_ldr.py`) ao receber dados do Cliente C++ na Placa Embarcada.
