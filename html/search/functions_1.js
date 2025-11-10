@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_0',['main',['../cliente_u_d_p__sensor__ldr_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'clienteUDP_sensor_ldr.cpp']]]
+  ['atualizar_5fgrafico_0',['atualizar_grafico',['../classservidor_u_d_p__sensor__ldr_1_1_app.html#a616e4b07da72ec63de641817b6de2dc2',1,'servidorUDP_sensor_ldr::App']]]
 ];

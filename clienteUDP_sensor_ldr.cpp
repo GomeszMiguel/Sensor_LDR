@@ -1,9 +1,9 @@
 /**
  * @file clienteUDP_sensor_ldr.cpp
  * @brief Implementação de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado.
- * @author Miguel Gomes
+ * * @author Miguel Gomes
  * @date 22 de Outubro de 2025
- * * Este programa lê valores do ADC exportados no sysfs e converte a resistência do LDR
+ * * @details Este programa lê valores do ADC exportados no sysfs e converte a resistência do LDR
  * em uma estimativa percentual de luminosidade (0% = escuro, 100% = claro).
  * O valor lido é então enviado via protocolo UDP (datagrama) para o servidor
  * rodando no endereço SERVER_IP (Host Windows/WSL) na porta 8080.
@@ -15,30 +15,50 @@
 #include <unistd.h>
 #include <cmath>
 #include <sys/socket.h> // Funções de socket (POSIX)
-#include <arpa/inet.h>  // Funções de conversão de endereço (inet_pton)
-#include <string>       // Necessário para std::string e std::to_string
+#include <arpa/inet.h> // Funções de conversão de endereço (inet_pton)
+#include <string> // Necessário para std::string e std::to_string
 
 using namespace std;
 
-#define SERVER_IP "192.168.42.10" // Endereço do servidor (Host Windows)
-#define PORT 8080                // Porta do servidor
+/** @def SERVER_IP
+ * @brief Endereço IP do servidor (Host Windows/WSL).
+ */
+#define SERVER_IP "192.168.42.10" 
+
+/** @def PORT
+ * @brief Porta UDP do servidor.
+ */
+#define PORT 8080
+
+/** @def BUFFER_SIZE
+ * @brief Tamanho máximo do buffer de comunicação.
+ */
 #define BUFFER_SIZE 1024
 
 /**
  * @class SensorLDR
  * @brief Classe para leitura e cálculo de luminosidade a partir de um LDR.
  *
- * A classe realiza a leitura de valores crus do ADC, calcula a resistência do LDR
+ * @details A classe realiza a leitura de valores crus do ADC, calcula a resistência do LDR
  * e mapeia para uma escala percentual de luminosidade, utilizando a lei de potência
  * que relaciona a resistência com a intensidade luminosa (logarítmica).
  */
 class SensorLDR {
 private:
-    std::string path;         /**< Caminho do arquivo sysfs do ADC (ex.: `/sys/bus/iio/devices/.../in_voltage13_raw`). */
-    float R_CLARO = 146*1e3;  /**< Resistência aproximada do LDR em ambiente claro (ohms). */
-    float R_ESCURO = 5*1e6;   /**< Resistência aproximada do LDR em ambiente escuro (ohms). */
-    const float ADC_MAX = 4095.0; /**< Valor máximo do ADC (12 bits). */
-    const float R_FIXO = 10000.0; /**< Resistência fixa usada no divisor resistivo (ohms). */
+    /**< Caminho do arquivo sysfs do ADC (ex.: `/sys/bus/iio/devices/.../in_voltage13_raw`). */
+    std::string path; 
+    
+    /**< Resistência aproximada do LDR em ambiente claro (ohms). */
+    float R_CLARO = 146*1e3; 
+    
+    /**< Resistência aproximada do LDR em ambiente escuro (ohms). */
+    float R_ESCURO = 5*1e6; 
+    
+    /**< Valor máximo do ADC (12 bits). */
+    const float ADC_MAX = 4095.0; 
+    
+    /**< Resistência fixa usada no divisor resistivo (ohms). */
+    const float R_FIXO = 10000.0; 
 
 public:
     /**
@@ -52,7 +72,7 @@ public:
     /**
      * @brief Lê o valor cru do ADC.
      *
-     * A leitura é feita diretamente do arquivo de dispositivo (sysfs) configurado no path.
+     * @details A leitura é feita diretamente do arquivo de dispositivo (sysfs) configurado no path.
      *
      * @return Valor inteiro lido diretamente do ADC.
      */
@@ -72,7 +92,7 @@ public:
     /**
      * @brief Calcula a luminosidade em percentual com base no valor lido do ADC.
      *
-     * O cálculo utiliza a fórmula do divisor de tensão para obter a R_LDR,
+     * @details O cálculo utiliza a fórmula do divisor de tensão para obter a R_LDR,
      * e então mapeia a resistência (em escala logarítmica) para uma porcentagem (0-100).
      *
      * @return Luminosidade percentual (0 a 100).
@@ -106,7 +126,7 @@ public:
 /**
  * @brief Função principal.
  *
- * Configura o socket UDP para enviar dados para o servidor 192.168.42.10:8080.
+ * @details Configura o socket UDP para enviar dados para o servidor 192.168.42.10:8080.
  * Cria um objeto SensorLDR, lê continuamente a luminosidade, converte o valor inteiro
  * para string e envia o datagrama para o servidor a cada segundo.
  *
@@ -145,6 +165,7 @@ int main() {
 
     /**
      * @brief Loop principal de leitura e envio.
+     * @details O loop executa leituras e envios a cada 1 segundo.
      */
     while (true) {
         memset(buffer, 0, BUFFER_SIZE);
@@ -152,11 +173,10 @@ int main() {
         // O valor lido do sensor é um INT
         int val = ldr.lerLuminosidadePercentual();
 
-        // CORREÇÃO do erro: invalid conversion from 'int' to 'const char *'
-        // 1. Converte o valor inteiro (int) para uma string C++ (std::string)
+        // Converte o valor inteiro (int) para uma string C++ (std::string)
         string val_str = to_string(val);
 
-        // 2. Obtém o ponteiro C-style (const char*) da string para uso na função sendto()
+        // Obtém o ponteiro C-style (const char*) da string para uso na função sendto()
         const char *message = val_str.c_str(); 
     
         // Calcula o tamanho da mensagem (apenas o tamanho da string, sem o terminador nulo)
@@ -164,6 +184,9 @@ int main() {
 
         /**
          * @brief Envia o datagrama UDP.
+         * @details O UDP é um protocolo sem conexão e não confiável; a chegada do pacote
+         * não é garantida pelo protocolo e é gerenciada pela aplicação (se necessário).
+         * O uso do UDP prioriza a baixa latência de dados de status em tempo real.
          * @param client_socket O descritor do socket.
          * @param message O ponteiro para os dados a serem enviados.
          * @param message_len O tamanho dos dados.

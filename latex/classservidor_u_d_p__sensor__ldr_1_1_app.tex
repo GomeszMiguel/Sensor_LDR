@@ -1,0 +1,356 @@
+\doxysection{Referência da Classe servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App}
+\hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app}{}\label{classservidor_u_d_p__sensor__ldr_1_1_app}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+
+
+Diagrama de hierarquia da classe servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classservidor_u_d_p__sensor__ldr_1_1_app__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagrama de colaboração para servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=190pt]{classservidor_u_d_p__sensor__ldr_1_1_app__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membros Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_a64fe39a55c7becf0258dee8c91715d4f}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_af4d337d4ff30b72a7646a644d40c1684}{criar\+\_\+widgets}} (self)
+\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_a451bf70c23c4924bf3a65149adb25f09}{processar\+\_\+fila\+\_\+dados}} (self)
+\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_a616e4b07da72ec63de641817b6de2dc2}{atualizar\+\_\+grafico}} (self)
+\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_a57c6148e4fbf2e3a9c20941cb3013d82}{salvar\+\_\+log}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_a429fd470336ce9556ce36fea5e4d67bd}{valor\+\_\+atual}} = tk.\+String\+Var(value="{}-\/-\/ \%"{})
+\begin{DoxyCompactList}\small\item\em Variável Tkinter para exibir o valor de luminosidade atual. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_aa9c6db428c93e4839931fddc652750c5}{status\+\_\+atual}} = tk.\+String\+Var(value="{}Aguardando dados..."{})
+\begin{DoxyCompactList}\small\item\em Variável Tkinter para exibir a mensagem de status/alerta. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_a2cf6b39192e31087dccda10b22709ef5}{fig}} = Figure(figsize=(6, 3), dpi=100)
+\begin{DoxyCompactList}\small\item\em Figura do Matplotlib para o gráfico. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_ac529f8912c87e392ec2a9b29cff4c85a}{ax}} = self.\+fig.\+add\+\_\+subplot(111)
+\begin{DoxyCompactList}\small\item\em Eixo da figura para plotagem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_a7e79f77273b4df6161b38cdfc307cc37}{linha\+\_\+grafico}}
+\begin{DoxyCompactList}\small\item\em Objeto de linha usado para atualizar o plot de forma eficiente. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_a7cccadb6a3b18f747855b446139e5bff}{canvas}} = Figure\+Canvas\+Tk\+Agg(self.\+fig, master=frame\+\_\+grafico)
+\begin{DoxyCompactList}\small\item\em Canvas Tkinter que contém a figura do Matplotlib. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classservidor_u_d_p__sensor__ldr_1_1_app_a99440d5968d9d9af2b5b7bf67a8aff73}{processar\+\_\+fila\+\_\+dados}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+\begin{DoxyVerb}@class App
+@brief Classe principal que define a Interface Gráfica do Usuário (GUI).
+
+Gerencia a janela principal, exibe o valor atual, o status de alerta,
+o gráfico de histórico e a funcionalidade de salvar log.
+Utiliza o método after() do Tkinter para processar a fila de dados de forma assíncrona.
+\end{DoxyVerb}
+ 
+
+\label{doc-constructors}
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_doc-constructors}
+\doxysubsection{Construtores e Destrutores}
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_a64fe39a55c7becf0258dee8c91715d4f}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_a64fe39a55c7becf0258dee8c91715d4f} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Construtor da classe App.
+Inicializa a janela, variáveis de controle e chama a criação de widgets.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00102\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self): }
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00104\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Construtor\ da\ classe\ App. }}
+\DoxyCodeLine{00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Inicializa\ a\ janela,\ variáveis\ de\ controle\ e\ chama\ a\ criação\ de\ widgets. }}
+\DoxyCodeLine{00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ super().\_\_init\_\_() }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ self.title(\textcolor{stringliteral}{"{}Monitor\ de\ Carga\ -\/\ Sensor\ LDR"{}}) }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ self.geometry(\textcolor{stringliteral}{"{}700x500"{}}) }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ self.valor\_atual\ =\ tk.StringVar(value=\textcolor{stringliteral}{"{}-\/-\/\ \%"{}}) }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ self.status\_atual\ =\ tk.StringVar(value=\textcolor{stringliteral}{"{}Aguardando\ dados..."{}}) }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ self.criar\_widgets() }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ self.processar\_fila\_dados() }
+\DoxyCodeLine{00120\  }
+
+\end{DoxyCode}
+Este é o diagrama das funções utilizadas por essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classservidor_u_d_p__sensor__ldr_1_1_app_a64fe39a55c7becf0258dee8c91715d4f_cgraph}
+\end{center}
+\end{figure}
+Esse é o diagrama das funções que utilizam essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=187pt]{classservidor_u_d_p__sensor__ldr_1_1_app_a64fe39a55c7becf0258dee8c91715d4f_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-func-members}
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_doc-func-members}
+\doxysubsection{Documentação das funções}
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_a616e4b07da72ec63de641817b6de2dc2}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!atualizar\_grafico@{atualizar\_grafico}}
+\index{atualizar\_grafico@{atualizar\_grafico}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{atualizar\_grafico()}{atualizar\_grafico()}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_a616e4b07da72ec63de641817b6de2dc2} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+atualizar\+\_\+grafico (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Atualiza os dados (eixos X e Y) do gráfico Matplotlib.
+O eixo Y é o histórico de dados_grafico. O eixo X é o índice da lista.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00184\ \ \ \ \ \textcolor{keyword}{def\ }atualizar\_grafico(self): }
+\DoxyCodeLine{00185\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00186\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Atualiza\ os\ dados\ (eixos\ X\ e\ Y)\ do\ gráfico\ Matplotlib. }}
+\DoxyCodeLine{00187\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ O\ eixo\ Y\ é\ o\ histórico\ de\ dados\_grafico.\ O\ eixo\ X\ é\ o\ índice\ da\ lista. }}
+\DoxyCodeLine{00188\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00189\ \ \ \ \ \ \ \ \ self.linha\_grafico.set\_ydata(list(dados\_grafico)) }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ self.linha\_grafico.set\_xdata(range(len(dados\_grafico))) }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ self.ax.set\_xlim(0,\ HISTORICO\_MAX\_PONTOS\ -\/\ 1) }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ self.canvas.draw() }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+Esse é o diagrama das funções que utilizam essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classservidor_u_d_p__sensor__ldr_1_1_app_a616e4b07da72ec63de641817b6de2dc2_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_af4d337d4ff30b72a7646a644d40c1684}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!criar\_widgets@{criar\_widgets}}
+\index{criar\_widgets@{criar\_widgets}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{criar\_widgets()}{criar\_widgets()}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_af4d337d4ff30b72a7646a644d40c1684} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+criar\+\_\+widgets (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Configura e empacota todos os componentes da interface.
+Cria os rótulos, o frame do Matplotlib e o botão de salvar log.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00121\ \ \ \ \ \textcolor{keyword}{def\ }criar\_widgets(self): }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00123\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Configura\ e\ empacota\ todos\ os\ componentes\ da\ interface. }}
+\DoxyCodeLine{00124\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Cria\ os\ rótulos,\ o\ frame\ do\ Matplotlib\ e\ o\ botão\ de\ salvar\ log. }}
+\DoxyCodeLine{00125\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00126\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ...\ (Detalhes\ da\ criação\ de\ widgets\ omitidos\ para\ brevidade\ Doxygen) }}
+\DoxyCodeLine{00127\  }
+\DoxyCodeLine{00128\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Frame\ do\ Gráfico }}
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ frame\_grafico\ =\ tk.Frame(self) }
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ frame\_grafico.pack(fill=tk.BOTH,\ expand=\textcolor{keyword}{True},\ padx=10) }
+\DoxyCodeLine{00131\  }
+\DoxyCodeLine{00132\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00134\ \ \ \ \ \ \ \ \ self.fig\ =\ Figure(figsize=(6,\ 3),\ dpi=100) }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00137\ \ \ \ \ \ \ \ \ self.ax\ =\ self.fig.add\_subplot(111) }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ self.ax.set\_title(\textcolor{stringliteral}{"{}Histórico\ de\ Luminosidade\ (Últimos\ 60s)"{}}) }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ self.ax.set\_ylabel(\textcolor{stringliteral}{"{}Luminosidade\ (\%)"{}}) }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ self.ax.set\_ylim(0,\ 100) }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ self.ax.grid() }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00144\ \ \ \ \ \ \ \ \ self.linha\_grafico,\ =\ self.ax.plot([],\ []) }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ self.canvas\ =\ FigureCanvasTkAgg(self.fig,\ master=frame\_grafico) }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ self.canvas.draw() }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ self.canvas.get\_tk\_widget().pack(side=tk.TOP,\ fill=tk.BOTH,\ expand=\textcolor{keyword}{True}) }
+\DoxyCodeLine{00151\  }
+\DoxyCodeLine{00152\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ...\ (Fim\ da\ criação\ de\ widgets) }}
+\DoxyCodeLine{00153\  }
+
+\end{DoxyCode}
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_a451bf70c23c4924bf3a65149adb25f09}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!processar\_fila\_dados@{processar\_fila\_dados}}
+\index{processar\_fila\_dados@{processar\_fila\_dados}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{processar\_fila\_dados()}{processar\_fila\_dados()}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_a451bf70c23c4924bf3a65149adb25f09} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+processar\+\_\+fila\+\_\+dados (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Verifica a fila de comunicação em busca de novos dados e atualiza a GUI.
+
+Utiliza get_nowait() para verificar a fila sem bloquear. Se um dicionário
+de dados for encontrado, a função atualiza o rótulo de valor, a mensagem
+de status (alerta) e adiciona o ponto ao gráfico. Chama a si mesma
+a cada 100ms via self.after().
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00154\ \ \ \ \ \textcolor{keyword}{def\ }processar\_fila\_dados(self): }
+\DoxyCodeLine{00155\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00156\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Verifica\ a\ fila\ de\ comunicação\ em\ busca\ de\ novos\ dados\ e\ atualiza\ a\ GUI. }}
+\DoxyCodeLine{00157\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00158\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Utiliza\ get\_nowait()\ para\ verificar\ a\ fila\ sem\ bloquear.\ Se\ um\ dicionário }}
+\DoxyCodeLine{00159\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ de\ dados\ for\ encontrado,\ a\ função\ atualiza\ o\ rótulo\ de\ valor,\ a\ mensagem }}
+\DoxyCodeLine{00160\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ de\ status\ (alerta)\ e\ adiciona\ o\ ponto\ ao\ gráfico.\ Chama\ a\ si\ mesma }}
+\DoxyCodeLine{00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ a\ cada\ 100ms\ via\ self.after(). }}
+\DoxyCodeLine{00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00163\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \ \ \ \ dados\ =\ dados\_fila.get\_nowait()\  }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \ valor\ =\ dados.get(\textcolor{stringliteral}{'valor'},\ 0) }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 1.\ Atualiza\ o\ Valor\ Atual }}
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ... }}
+\DoxyCodeLine{00170\  }
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 2.\ Atualiza\ o\ Alerta\ Visual }}
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ... }}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 3.\ Atualiza\ o\ Histórico\ Gráfico }}
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ dados\_grafico.append(valor) }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ self.atualizar\_grafico() }
+\DoxyCodeLine{00177\  }
+\DoxyCodeLine{00178\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ queue.Empty: }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Não\ havia\ dados\ na\ fila,\ apenas\ continua }}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{finally}: }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \ \ \ \ self.after(100,\ self.processar\_fila\_dados) }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+Este é o diagrama das funções utilizadas por essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classservidor_u_d_p__sensor__ldr_1_1_app_a451bf70c23c4924bf3a65149adb25f09_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_a57c6148e4fbf2e3a9c20941cb3013d82}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!salvar\_log@{salvar\_log}}
+\index{salvar\_log@{salvar\_log}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{salvar\_log()}{salvar\_log()}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_a57c6148e4fbf2e3a9c20941cb3013d82} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+salvar\+\_\+log (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Salva o valor atual de luminosidade em um arquivo CSV (ldr_log.csv).
+Inclui um timestamp para cada registro e um cabeçalho se o arquivo for novo.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00194\ \ \ \ \ \textcolor{keyword}{def\ }salvar\_log(self): }
+\DoxyCodeLine{00195\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00196\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Salva\ o\ valor\ atual\ de\ luminosidade\ em\ um\ arquivo\ CSV\ (ldr\_log.csv). }}
+\DoxyCodeLine{00197\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Inclui\ um\ timestamp\ para\ cada\ registro\ e\ um\ cabeçalho\ se\ o\ arquivo\ for\ novo. }}
+\DoxyCodeLine{00198\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ valor\_log\ =\ self.valor\_atual.get().split(\textcolor{stringliteral}{'\ '})[0] }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ timestamp\ =\ datetime.now().strftime(\textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d\ \%H:\%M:\%S"{}}) }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ linha\ =\ f\textcolor{stringliteral}{"{}\{timestamp\},\{valor\_log\}\(\backslash\)n"{}} }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(\textcolor{stringliteral}{"{}ldr\_log.csv"{}},\ \textcolor{stringliteral}{"{}a"{}})\ \textcolor{keyword}{as}\ f: }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ f.tell()\ ==\ 0: }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{}timestamp,luminosidade\_percent\(\backslash\)n"{}}) }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f.write(linha) }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ self.status\_atual.set(f\textcolor{stringliteral}{"{}Log\ salvo\ com\ sucesso\ às\ \{timestamp\}"{}}) }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ self.label\_status.config(fg=\textcolor{stringliteral}{"{}blue"{}}) }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e: }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \ \ \ \ self.status\_atual.set(f\textcolor{stringliteral}{"{}Erro\ ao\ salvar\ log:\ \{e\}"{}}) }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ self.label\_status.config(fg=\textcolor{stringliteral}{"{}red"{}}) }
+\DoxyCodeLine{00213\  }
+\DoxyCodeLine{00214\ \textcolor{comment}{\#\ -\/-\/-\/\ Ponto\ de\ Entrada\ Principal\ -\/-\/-\/ }}
+
+\end{DoxyCode}
+
+
+\label{doc-variable-members}
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_doc-variable-members}
+\doxysubsection{Atributos}
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_ac529f8912c87e392ec2a9b29cff4c85a}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!ax@{ax}}
+\index{ax@{ax}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{ax}{ax}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_ac529f8912c87e392ec2a9b29cff4c85a} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+ax = self.\+fig.\+add\+\_\+subplot(111)}
+
+
+
+Eixo da figura para plotagem. 
+
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_a7cccadb6a3b18f747855b446139e5bff}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!canvas@{canvas}}
+\index{canvas@{canvas}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{canvas}{canvas}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_a7cccadb6a3b18f747855b446139e5bff} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+canvas = Figure\+Canvas\+Tk\+Agg(self.\+fig, master=frame\+\_\+grafico)}
+
+
+
+Canvas Tkinter que contém a figura do Matplotlib. 
+
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_a2cf6b39192e31087dccda10b22709ef5}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!fig@{fig}}
+\index{fig@{fig}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{fig}{fig}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_a2cf6b39192e31087dccda10b22709ef5} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+fig = Figure(figsize=(6, 3), dpi=100)}
+
+
+
+Figura do Matplotlib para o gráfico. 
+
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_a7e79f77273b4df6161b38cdfc307cc37}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!linha\_grafico@{linha\_grafico}}
+\index{linha\_grafico@{linha\_grafico}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{linha\_grafico}{linha\_grafico}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_a7e79f77273b4df6161b38cdfc307cc37} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+linha\+\_\+grafico}
+
+
+
+Objeto de linha usado para atualizar o plot de forma eficiente. 
+
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_a99440d5968d9d9af2b5b7bf67a8aff73}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!processar\_fila\_dados@{processar\_fila\_dados}}
+\index{processar\_fila\_dados@{processar\_fila\_dados}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{processar\_fila\_dados}{processar\_fila\_dados}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_a99440d5968d9d9af2b5b7bf67a8aff73} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+processar\+\_\+fila\+\_\+dados}
+
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_aa9c6db428c93e4839931fddc652750c5}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!status\_atual@{status\_atual}}
+\index{status\_atual@{status\_atual}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{status\_atual}{status\_atual}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_aa9c6db428c93e4839931fddc652750c5} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+status\+\_\+atual = tk.\+String\+Var(value="{}Aguardando dados..."{})}
+
+
+
+Variável Tkinter para exibir a mensagem de status/alerta. 
+
+\Hypertarget{classservidor_u_d_p__sensor__ldr_1_1_app_a429fd470336ce9556ce36fea5e4d67bd}\index{servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}!valor\_atual@{valor\_atual}}
+\index{valor\_atual@{valor\_atual}!servidorUDP\_sensor\_ldr.App@{servidorUDP\_sensor\_ldr.App}}
+\doxysubsubsection{\texorpdfstring{valor\_atual}{valor\_atual}}
+{\footnotesize\ttfamily \label{classservidor_u_d_p__sensor__ldr_1_1_app_a429fd470336ce9556ce36fea5e4d67bd} 
+servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App.\+valor\+\_\+atual = tk.\+String\+Var(value="{}-\/-\/ \%"{})}
+
+
+
+Variável Tkinter para exibir o valor de luminosidade atual. 
+
+
+
+A documentação para essa classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/carlo/\+One\+Drive/\+Documentos/\+ELETRONICA\+\_\+\+IME/\+PROG\+\_\+\+APLICADA/codigo\+\_\+doxygen/\mbox{\hyperlink{servidor_u_d_p__sensor__ldr_8py}{servidor\+UDP\+\_\+sensor\+\_\+ldr.\+py}}\end{DoxyCompactItemize}

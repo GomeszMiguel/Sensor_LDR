@@ -1,0 +1,34 @@
+\doxysection{Referência do Arquivo C\+:/\+Users/carlo/\+One\+Drive/\+Documentos/\+ELETRONICA\+\_\+\+IME/\+PROG\+\_\+\+APLICADA/codigo\+\_\+doxygen/\+Servidor\+UDP\+\_\+sensor\+\_\+ldr.py}
+\hypertarget{_servidor_u_d_p__sensor__ldr_8py}{}\label{_servidor_u_d_p__sensor__ldr_8py}\index{C:/Users/carlo/OneDrive/Documentos/ELETRONICA\_IME/PROG\_APLICADA/codigo\_doxygen/ServidorUDP\_sensor\_ldr.py@{C:/Users/carlo/OneDrive/Documentos/ELETRONICA\_IME/PROG\_APLICADA/codigo\_doxygen/ServidorUDP\_sensor\_ldr.py}}
+\doxysubsubsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_servidor_u_d_p__sensor__ldr_1_1_app}{Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+App}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Namespaces}
+\begin{DoxyCompactItemize}
+\item 
+namespace \mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr}{Servidor\+UDP\+\_\+sensor\+\_\+ldr}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_aa1f370123bd4faaa3db0b217a869e72e}{Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+iniciar\+\_\+servidor\+\_\+udp}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a26fb419d906c2e98313184ee698eb27a}{Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+UDP\+\_\+\+IP}} = "{}192.\+168.\+42.\+10"{}
+\item 
+int \mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a1737169138775a3606004a13957e7b78}{Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+UDP\+\_\+\+PORT}} = 8080
+\item 
+int \mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_ac0f3aadaebdabbaab21599b34e613bfa}{Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+HISTORICO\+\_\+\+MAX\+\_\+\+PONTOS}} = 60
+\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a7c6a21874cea237fa47468493057dada}{Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+dados\+\_\+fila}} = queue.\+Queue()
+\begin{DoxyCompactList}\small\item\em Fila thread-\/safe para armazenar os dicionários/objetos JSON recebidos. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_aebf8a1fdc8014bd03fdeb39bbe5810a6}{Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+dados\+\_\+grafico}} = deque(maxlen=\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_ac0f3aadaebdabbaab21599b34e613bfa}{HISTORICO\+\_\+\+MAX\+\_\+\+PONTOS}})
+\begin{DoxyCompactList}\small\item\em Deque para armazenar o histórico de valores para plotagem, com tamanho máximo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a48733734084110a48a7ea86cfcd987cf}{Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+servidor\+\_\+thread}} = threading.\+Thread(target=\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_aa1f370123bd4faaa3db0b217a869e72e}{iniciar\+\_\+servidor\+\_\+udp}}, daemon=True)
+\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a6957de8a595b6ffa336f038cf788b6b8}{Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+app}} = \mbox{\hyperlink{class_servidor_u_d_p__sensor__ldr_1_1_app}{App}}()
+\end{DoxyCompactItemize}

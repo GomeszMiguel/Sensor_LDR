@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['lerluminosidadepercentual_0',['lerLuminosidadePercentual',['../class_sensor_l_d_r.html#a9da6791dcab08a2bc8aa08751cb7abe2',1,'SensorLDR']]],
-  ['lervalor_1',['lerValor',['../class_sensor_l_d_r.html#aa293a835a0aba71884e116af2db215f8',1,'SensorLDR']]]
+  ['_5f_5finit_5f_5f_0',['__init__',['../classservidor_u_d_p__sensor__ldr_1_1_app.html#a64fe39a55c7becf0258dee8c91715d4f',1,'servidorUDP_sensor_ldr::App']]]
 ];

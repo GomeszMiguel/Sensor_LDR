@@ -1,0 +1,356 @@
+\doxysection{Referência da Classe implementacao\+Graf.\+App}
+\hypertarget{classimplementacao_graf_1_1_app}{}\label{classimplementacao_graf_1_1_app}\index{implementacaoGraf.App@{implementacaoGraf.App}}
+
+
+Diagrama de hierarquia da classe implementacao\+Graf.\+App\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classimplementacao_graf_1_1_app__inherit__graph}
+\end{center}
+\end{figure}
+
+
+Diagrama de colaboração para implementacao\+Graf.\+App\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=193pt]{classimplementacao_graf_1_1_app__coll__graph}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Membros Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_aca302f67479015b8125627acc88dc8b3}{\+\_\+\+\_\+init\+\_\+\+\_\+}} (self)
+\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_a3bc9c96f12be4f28eac31c12cdcfda62}{criar\+\_\+widgets}} (self)
+\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_a85770e78685488f3862dd31e96f594a3}{processar\+\_\+fila\+\_\+dados}} (self)
+\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_a78f88d5636e3d8d7daad28b7cc4722dd}{atualizar\+\_\+grafico}} (self)
+\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_a0356fd4ad1ba1a1defe174bffb799fad}{salvar\+\_\+log}} (self)
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Atributos Públicos}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_a7737524b8093c905301fff95c0b3a9d7}{valor\+\_\+atual}} = tk.\+String\+Var(value="{}-\/-\/ \%"{})
+\begin{DoxyCompactList}\small\item\em Variável Tkinter para exibir o valor de luminosidade atual. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_a1b42618405efdfa1e568f1f128561b5d}{status\+\_\+atual}} = tk.\+String\+Var(value="{}Aguardando dados..."{})
+\begin{DoxyCompactList}\small\item\em Variável Tkinter para exibir a mensagem de status/alerta. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_acd14b4ff9a7ccdcae9f995ff345a384f}{fig}} = Figure(figsize=(6, 3), dpi=100)
+\begin{DoxyCompactList}\small\item\em Figura do Matplotlib para o gráfico. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_aa55d8763ea8c3b2368eddef52a02dc0d}{ax}} = self.\+fig.\+add\+\_\+subplot(111)
+\begin{DoxyCompactList}\small\item\em Eixo da figura para plotagem. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_a42618542ed0fd5906195ebec2aceba5a}{linha\+\_\+grafico}}
+\begin{DoxyCompactList}\small\item\em Objeto de linha usado para atualizar o plot de forma eficiente. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_a4838ebd43cbe032a674521d8ce3d43a3}{canvas}} = Figure\+Canvas\+Tk\+Agg(self.\+fig, master=frame\+\_\+grafico)
+\begin{DoxyCompactList}\small\item\em Canvas Tkinter que contém a figura do Matplotlib. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classimplementacao_graf_1_1_app_a4af9335f32bbb352d4009f92f195c219}{processar\+\_\+fila\+\_\+dados}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+\begin{DoxyVerb}@class App
+@brief Classe principal que define a Interface Gráfica do Usuário (GUI).
+
+Gerencia a janela principal, exibe o valor atual, o status de alerta,
+o gráfico de histórico e a funcionalidade de salvar log.
+Utiliza o método after() do Tkinter para processar a fila de dados de forma assíncrona.
+\end{DoxyVerb}
+ 
+
+\label{doc-constructors}
+\Hypertarget{classimplementacao_graf_1_1_app_doc-constructors}
+\doxysubsection{Construtores e Destrutores}
+\Hypertarget{classimplementacao_graf_1_1_app_aca302f67479015b8125627acc88dc8b3}\index{implementacaoGraf.App@{implementacaoGraf.App}!\_\_init\_\_@{\_\_init\_\_}}
+\index{\_\_init\_\_@{\_\_init\_\_}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{\_\_init\_\_()}{\_\_init\_\_()}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_aca302f67479015b8125627acc88dc8b3} 
+implementacao\+Graf.\+App.\+\_\+\+\_\+init\+\_\+\+\_\+ (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Construtor da classe App.
+Inicializa a janela, variáveis de controle e chama a criação de widgets.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00103\ \ \ \ \ \textcolor{keyword}{def\ }\_\_init\_\_(self): }
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00105\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Construtor\ da\ classe\ App. }}
+\DoxyCodeLine{00106\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Inicializa\ a\ janela,\ variáveis\ de\ controle\ e\ chama\ a\ criação\ de\ widgets. }}
+\DoxyCodeLine{00107\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ super().\_\_init\_\_() }
+\DoxyCodeLine{00109\ \ \ \ \ \ \ \ \ self.title(\textcolor{stringliteral}{"{}Monitor\ de\ Carga\ -\/\ Sensor\ LDR"{}}) }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ self.geometry(\textcolor{stringliteral}{"{}700x500"{}}) }
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ self.valor\_atual\ =\ tk.StringVar(value=\textcolor{stringliteral}{"{}-\/-\/\ \%"{}}) }
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ self.status\_atual\ =\ tk.StringVar(value=\textcolor{stringliteral}{"{}Aguardando\ dados..."{}}) }
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ self.criar\_widgets() }
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ self.processar\_fila\_dados() }
+\DoxyCodeLine{00121\  }
+
+\end{DoxyCode}
+Este é o diagrama das funções utilizadas por essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classimplementacao_graf_1_1_app_aca302f67479015b8125627acc88dc8b3_cgraph}
+\end{center}
+\end{figure}
+Esse é o diagrama das funções que utilizam essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=204pt]{classimplementacao_graf_1_1_app_aca302f67479015b8125627acc88dc8b3_icgraph}
+\end{center}
+\end{figure}
+
+
+\label{doc-func-members}
+\Hypertarget{classimplementacao_graf_1_1_app_doc-func-members}
+\doxysubsection{Documentação das funções}
+\Hypertarget{classimplementacao_graf_1_1_app_a78f88d5636e3d8d7daad28b7cc4722dd}\index{implementacaoGraf.App@{implementacaoGraf.App}!atualizar\_grafico@{atualizar\_grafico}}
+\index{atualizar\_grafico@{atualizar\_grafico}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{atualizar\_grafico()}{atualizar\_grafico()}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_a78f88d5636e3d8d7daad28b7cc4722dd} 
+implementacao\+Graf.\+App.\+atualizar\+\_\+grafico (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Atualiza os dados (eixos X e Y) do gráfico Matplotlib.
+O eixo Y é o histórico de dados_grafico. O eixo X é o índice da lista.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00185\ \ \ \ \ \textcolor{keyword}{def\ }atualizar\_grafico(self): }
+\DoxyCodeLine{00186\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00187\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Atualiza\ os\ dados\ (eixos\ X\ e\ Y)\ do\ gráfico\ Matplotlib. }}
+\DoxyCodeLine{00188\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ O\ eixo\ Y\ é\ o\ histórico\ de\ dados\_grafico.\ O\ eixo\ X\ é\ o\ índice\ da\ lista. }}
+\DoxyCodeLine{00189\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00190\ \ \ \ \ \ \ \ \ self.linha\_grafico.set\_ydata(list(dados\_grafico)) }
+\DoxyCodeLine{00191\ \ \ \ \ \ \ \ \ self.linha\_grafico.set\_xdata(range(len(dados\_grafico))) }
+\DoxyCodeLine{00192\ \ \ \ \ \ \ \ \ self.ax.set\_xlim(0,\ HISTORICO\_MAX\_PONTOS\ -\/\ 1) }
+\DoxyCodeLine{00193\ \ \ \ \ \ \ \ \ self.canvas.draw() }
+\DoxyCodeLine{00194\ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+Esse é o diagrama das funções que utilizam essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classimplementacao_graf_1_1_app_a78f88d5636e3d8d7daad28b7cc4722dd_icgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classimplementacao_graf_1_1_app_a3bc9c96f12be4f28eac31c12cdcfda62}\index{implementacaoGraf.App@{implementacaoGraf.App}!criar\_widgets@{criar\_widgets}}
+\index{criar\_widgets@{criar\_widgets}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{criar\_widgets()}{criar\_widgets()}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_a3bc9c96f12be4f28eac31c12cdcfda62} 
+implementacao\+Graf.\+App.\+criar\+\_\+widgets (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Configura e empacota todos os componentes da interface.
+Cria os rótulos, o frame do Matplotlib e o botão de salvar log.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00122\ \ \ \ \ \textcolor{keyword}{def\ }criar\_widgets(self): }
+\DoxyCodeLine{00123\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00124\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Configura\ e\ empacota\ todos\ os\ componentes\ da\ interface. }}
+\DoxyCodeLine{00125\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Cria\ os\ rótulos,\ o\ frame\ do\ Matplotlib\ e\ o\ botão\ de\ salvar\ log. }}
+\DoxyCodeLine{00126\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00127\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ...\ (Detalhes\ da\ criação\ de\ widgets\ omitidos\ para\ brevidade\ Doxygen) }}
+\DoxyCodeLine{00128\  }
+\DoxyCodeLine{00129\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Frame\ do\ Gráfico }}
+\DoxyCodeLine{00130\ \ \ \ \ \ \ \ \ frame\_grafico\ =\ tk.Frame(self) }
+\DoxyCodeLine{00131\ \ \ \ \ \ \ \ \ frame\_grafico.pack(fill=tk.BOTH,\ expand=\textcolor{keyword}{True},\ padx=10) }
+\DoxyCodeLine{00132\  }
+\DoxyCodeLine{00133\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ self.fig\ =\ Figure(figsize=(6,\ 3),\ dpi=100) }
+\DoxyCodeLine{00136\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00138\ \ \ \ \ \ \ \ \ self.ax\ =\ self.fig.add\_subplot(111) }
+\DoxyCodeLine{00139\ \ \ \ \ \ \ \ \ self.ax.set\_title(\textcolor{stringliteral}{"{}Histórico\ de\ Luminosidade\ (Últimos\ 60s)"{}}) }
+\DoxyCodeLine{00140\ \ \ \ \ \ \ \ \ self.ax.set\_ylabel(\textcolor{stringliteral}{"{}Luminosidade\ (\%)"{}}) }
+\DoxyCodeLine{00141\ \ \ \ \ \ \ \ \ self.ax.set\_ylim(0,\ 100) }
+\DoxyCodeLine{00142\ \ \ \ \ \ \ \ \ self.ax.grid() }
+\DoxyCodeLine{00143\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00145\ \ \ \ \ \ \ \ \ self.linha\_grafico,\ =\ self.ax.plot([],\ []) }
+\DoxyCodeLine{00146\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00147\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ self.canvas\ =\ FigureCanvasTkAgg(self.fig,\ master=frame\_grafico) }
+\DoxyCodeLine{00150\ \ \ \ \ \ \ \ \ self.canvas.draw() }
+\DoxyCodeLine{00151\ \ \ \ \ \ \ \ \ self.canvas.get\_tk\_widget().pack(side=tk.TOP,\ fill=tk.BOTH,\ expand=\textcolor{keyword}{True}) }
+\DoxyCodeLine{00152\  }
+\DoxyCodeLine{00153\ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ...\ (Fim\ da\ criação\ de\ widgets) }}
+\DoxyCodeLine{00154\  }
+
+\end{DoxyCode}
+\Hypertarget{classimplementacao_graf_1_1_app_a85770e78685488f3862dd31e96f594a3}\index{implementacaoGraf.App@{implementacaoGraf.App}!processar\_fila\_dados@{processar\_fila\_dados}}
+\index{processar\_fila\_dados@{processar\_fila\_dados}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{processar\_fila\_dados()}{processar\_fila\_dados()}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_a85770e78685488f3862dd31e96f594a3} 
+implementacao\+Graf.\+App.\+processar\+\_\+fila\+\_\+dados (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Verifica a fila de comunicação em busca de novos dados e atualiza a GUI.
+
+Utiliza get_nowait() para verificar a fila sem bloquear. Se um dicionário
+de dados for encontrado, a função atualiza o rótulo de valor, a mensagem
+de status (alerta) e adiciona o ponto ao gráfico. Chama a si mesma
+a cada 100ms via self.after().
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00155\ \ \ \ \ \textcolor{keyword}{def\ }processar\_fila\_dados(self): }
+\DoxyCodeLine{00156\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00157\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Verifica\ a\ fila\ de\ comunicação\ em\ busca\ de\ novos\ dados\ e\ atualiza\ a\ GUI. }}
+\DoxyCodeLine{00158\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00159\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Utiliza\ get\_nowait()\ para\ verificar\ a\ fila\ sem\ bloquear.\ Se\ um\ dicionário }}
+\DoxyCodeLine{00160\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ de\ dados\ for\ encontrado,\ a\ função\ atualiza\ o\ rótulo\ de\ valor,\ a\ mensagem }}
+\DoxyCodeLine{00161\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ de\ status\ (alerta)\ e\ adiciona\ o\ ponto\ ao\ gráfico.\ Chama\ a\ si\ mesma }}
+\DoxyCodeLine{00162\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ a\ cada\ 100ms\ via\ self.after(). }}
+\DoxyCodeLine{00163\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00164\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00165\ \ \ \ \ \ \ \ \ \ \ \ \ dados\ =\ dados\_fila.get\_nowait()\  }
+\DoxyCodeLine{00166\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00167\ \ \ \ \ \ \ \ \ \ \ \ \ valor\ =\ dados.get(\textcolor{stringliteral}{'valor'},\ 0) }
+\DoxyCodeLine{00168\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00169\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 1.\ Atualiza\ o\ Valor\ Atual }}
+\DoxyCodeLine{00170\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ... }}
+\DoxyCodeLine{00171\  }
+\DoxyCodeLine{00172\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 2.\ Atualiza\ o\ Alerta\ Visual }}
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ ... }}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00175\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 3.\ Atualiza\ o\ Histórico\ Gráfico }}
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \ \ \ \ dados\_grafico.append(valor) }
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \ \ \ \ self.atualizar\_grafico() }
+\DoxyCodeLine{00178\  }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ queue.Empty: }
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Não\ havia\ dados\ na\ fila,\ apenas\ continua }}
+\DoxyCodeLine{00181\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{pass} }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{finally}: }
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \ \ \ \ self.after(100,\ self.processar\_fila\_dados) }
+\DoxyCodeLine{00184\ \ \ \ \ \ \ \ \ \ \ \ \  }
+
+\end{DoxyCode}
+Este é o diagrama das funções utilizadas por essa função\+:
+\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{classimplementacao_graf_1_1_app_a85770e78685488f3862dd31e96f594a3_cgraph}
+\end{center}
+\end{figure}
+\Hypertarget{classimplementacao_graf_1_1_app_a0356fd4ad1ba1a1defe174bffb799fad}\index{implementacaoGraf.App@{implementacaoGraf.App}!salvar\_log@{salvar\_log}}
+\index{salvar\_log@{salvar\_log}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{salvar\_log()}{salvar\_log()}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_a0356fd4ad1ba1a1defe174bffb799fad} 
+implementacao\+Graf.\+App.\+salvar\+\_\+log (\begin{DoxyParamCaption}\item[{}]{self}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Salva o valor atual de luminosidade em um arquivo CSV (ldr_log.csv).
+Inclui um timestamp para cada registro e um cabeçalho se o arquivo for novo.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00195\ \ \ \ \ \textcolor{keyword}{def\ }salvar\_log(self): }
+\DoxyCodeLine{00196\ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00197\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ @brief\ Salva\ o\ valor\ atual\ de\ luminosidade\ em\ um\ arquivo\ CSV\ (ldr\_log.csv). }}
+\DoxyCodeLine{00198\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ Inclui\ um\ timestamp\ para\ cada\ registro\ e\ um\ cabeçalho\ se\ o\ arquivo\ for\ novo. }}
+\DoxyCodeLine{00199\ \textcolor{stringliteral}{\ \ \ \ \ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ valor\_log\ =\ self.valor\_atual.get().split(\textcolor{stringliteral}{'\ '})[0] }
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ timestamp\ =\ datetime.now().strftime(\textcolor{stringliteral}{"{}\%Y-\/\%m-\/\%d\ \%H:\%M:\%S"{}}) }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ linha\ =\ f\textcolor{stringliteral}{"{}\{timestamp\},\{valor\_log\}\(\backslash\)n"{}} }
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keyword}{with}\ open(\textcolor{stringliteral}{"{}ldr\_log.csv"{}},\ \textcolor{stringliteral}{"{}a"{}})\ \textcolor{keyword}{as}\ f: }
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ f.tell()\ ==\ 0: }
+\DoxyCodeLine{00207\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f.write(\textcolor{stringliteral}{"{}timestamp,luminosidade\_percent\(\backslash\)n"{}}) }
+\DoxyCodeLine{00208\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ f.write(linha) }
+\DoxyCodeLine{00209\ \ \ \ \ \ \ \ \ \ \ \ \ self.status\_atual.set(f\textcolor{stringliteral}{"{}Log\ salvo\ com\ sucesso\ às\ \{timestamp\}"{}}) }
+\DoxyCodeLine{00210\ \ \ \ \ \ \ \ \ \ \ \ \ self.label\_status.config(fg=\textcolor{stringliteral}{"{}blue"{}}) }
+\DoxyCodeLine{00211\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e: }
+\DoxyCodeLine{00212\ \ \ \ \ \ \ \ \ \ \ \ \ self.status\_atual.set(f\textcolor{stringliteral}{"{}Erro\ ao\ salvar\ log:\ \{e\}"{}}) }
+\DoxyCodeLine{00213\ \ \ \ \ \ \ \ \ \ \ \ \ self.label\_status.config(fg=\textcolor{stringliteral}{"{}red"{}}) }
+\DoxyCodeLine{00214\  }
+\DoxyCodeLine{00215\ \textcolor{comment}{\#\ -\/-\/-\/\ Ponto\ de\ Entrada\ Principal\ -\/-\/-\/ }}
+
+\end{DoxyCode}
+
+
+\label{doc-variable-members}
+\Hypertarget{classimplementacao_graf_1_1_app_doc-variable-members}
+\doxysubsection{Atributos}
+\Hypertarget{classimplementacao_graf_1_1_app_aa55d8763ea8c3b2368eddef52a02dc0d}\index{implementacaoGraf.App@{implementacaoGraf.App}!ax@{ax}}
+\index{ax@{ax}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{ax}{ax}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_aa55d8763ea8c3b2368eddef52a02dc0d} 
+implementacao\+Graf.\+App.\+ax = self.\+fig.\+add\+\_\+subplot(111)}
+
+
+
+Eixo da figura para plotagem. 
+
+\Hypertarget{classimplementacao_graf_1_1_app_a4838ebd43cbe032a674521d8ce3d43a3}\index{implementacaoGraf.App@{implementacaoGraf.App}!canvas@{canvas}}
+\index{canvas@{canvas}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{canvas}{canvas}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_a4838ebd43cbe032a674521d8ce3d43a3} 
+implementacao\+Graf.\+App.\+canvas = Figure\+Canvas\+Tk\+Agg(self.\+fig, master=frame\+\_\+grafico)}
+
+
+
+Canvas Tkinter que contém a figura do Matplotlib. 
+
+\Hypertarget{classimplementacao_graf_1_1_app_acd14b4ff9a7ccdcae9f995ff345a384f}\index{implementacaoGraf.App@{implementacaoGraf.App}!fig@{fig}}
+\index{fig@{fig}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{fig}{fig}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_acd14b4ff9a7ccdcae9f995ff345a384f} 
+implementacao\+Graf.\+App.\+fig = Figure(figsize=(6, 3), dpi=100)}
+
+
+
+Figura do Matplotlib para o gráfico. 
+
+\Hypertarget{classimplementacao_graf_1_1_app_a42618542ed0fd5906195ebec2aceba5a}\index{implementacaoGraf.App@{implementacaoGraf.App}!linha\_grafico@{linha\_grafico}}
+\index{linha\_grafico@{linha\_grafico}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{linha\_grafico}{linha\_grafico}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_a42618542ed0fd5906195ebec2aceba5a} 
+implementacao\+Graf.\+App.\+linha\+\_\+grafico}
+
+
+
+Objeto de linha usado para atualizar o plot de forma eficiente. 
+
+\Hypertarget{classimplementacao_graf_1_1_app_a4af9335f32bbb352d4009f92f195c219}\index{implementacaoGraf.App@{implementacaoGraf.App}!processar\_fila\_dados@{processar\_fila\_dados}}
+\index{processar\_fila\_dados@{processar\_fila\_dados}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{processar\_fila\_dados}{processar\_fila\_dados}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_a4af9335f32bbb352d4009f92f195c219} 
+implementacao\+Graf.\+App.\+processar\+\_\+fila\+\_\+dados}
+
+\Hypertarget{classimplementacao_graf_1_1_app_a1b42618405efdfa1e568f1f128561b5d}\index{implementacaoGraf.App@{implementacaoGraf.App}!status\_atual@{status\_atual}}
+\index{status\_atual@{status\_atual}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{status\_atual}{status\_atual}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_a1b42618405efdfa1e568f1f128561b5d} 
+implementacao\+Graf.\+App.\+status\+\_\+atual = tk.\+String\+Var(value="{}Aguardando dados..."{})}
+
+
+
+Variável Tkinter para exibir a mensagem de status/alerta. 
+
+\Hypertarget{classimplementacao_graf_1_1_app_a7737524b8093c905301fff95c0b3a9d7}\index{implementacaoGraf.App@{implementacaoGraf.App}!valor\_atual@{valor\_atual}}
+\index{valor\_atual@{valor\_atual}!implementacaoGraf.App@{implementacaoGraf.App}}
+\doxysubsubsection{\texorpdfstring{valor\_atual}{valor\_atual}}
+{\footnotesize\ttfamily \label{classimplementacao_graf_1_1_app_a7737524b8093c905301fff95c0b3a9d7} 
+implementacao\+Graf.\+App.\+valor\+\_\+atual = tk.\+String\+Var(value="{}-\/-\/ \%"{})}
+
+
+
+Variável Tkinter para exibir o valor de luminosidade atual. 
+
+
+
+A documentação para essa classe foi gerada a partir do seguinte arquivo\+:\begin{DoxyCompactItemize}
+\item 
+C\+:/\+Users/carlo/\+One\+Drive/\+Documentos/\+ELETRONICA\+\_\+\+IME/\+PROG\+\_\+\+APLICADA/codigo\+\_\+doxygen/\mbox{\hyperlink{implementacao_graf_8py}{implementacao\+Graf.\+py}}\end{DoxyCompactItemize}

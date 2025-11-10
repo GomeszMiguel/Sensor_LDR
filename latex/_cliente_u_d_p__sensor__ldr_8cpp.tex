@@ -1,0 +1,208 @@
+\doxysection{Referência do Arquivo C\+:/\+Users/carlo/\+One\+Drive/\+Documentos/\+ELETRONICA\+\_\+\+IME/\+PROG\+\_\+\+APLICADA/codigo\+\_\+doxygen/\+Cliente\+UDP\+\_\+sensor\+\_\+ldr.cpp}
+\hypertarget{_cliente_u_d_p__sensor__ldr_8cpp}{}\label{_cliente_u_d_p__sensor__ldr_8cpp}\index{C:/Users/carlo/OneDrive/Documentos/ELETRONICA\_IME/PROG\_APLICADA/codigo\_doxygen/ClienteUDP\_sensor\_ldr.cpp@{C:/Users/carlo/OneDrive/Documentos/ELETRONICA\_IME/PROG\_APLICADA/codigo\_doxygen/ClienteUDP\_sensor\_ldr.cpp}}
+
+
+Implementação de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado.  
+
+
+{\ttfamily \#include $<$iostream$>$}\newline
+{\ttfamily \#include $<$fstream$>$}\newline
+{\ttfamily \#include $<$cstring$>$}\newline
+{\ttfamily \#include $<$unistd.\+h$>$}\newline
+{\ttfamily \#include $<$cmath$>$}\newline
+{\ttfamily \#include $<$sys/socket.\+h$>$}\newline
+{\ttfamily \#include $<$arpa/inet.\+h$>$}\newline
+{\ttfamily \#include $<$string$>$}\newline
+Gráfico de dependência de inclusões para Cliente\+UDP\+\_\+sensor\+\_\+ldr.\+cpp\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_cliente_u_d_p__sensor__ldr_8cpp__incl}
+\end{center}
+\end{figure}
+\doxysubsubsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_sensor_l_d_r}{Sensor\+LDR}}
+\begin{DoxyCompactList}\small\item\em Classe para leitura e cálculo de luminosidade a partir de um LDR. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Definições e Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_a28d06fc286f28044ed3380969700ff3f}{SERVER\+\_\+\+IP}}~"{}192.\+168.\+42.\+10"{}
+\begin{DoxyCompactList}\small\item\em Endereço IP do servidor (Host Windows/\+WSL). \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}}~8080
+\begin{DoxyCompactList}\small\item\em Porta UDP do servidor. \end{DoxyCompactList}\item 
+\#define \mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\+\_\+\+SIZE}}~1024
+\begin{DoxyCompactList}\small\item\em Tamanho máximo do buffer de comunicação. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Função principal. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+Implementação de leitura de luminosidade utilizando um sensor LDR em um sistema Linux embarcado. 
+
+
+\begin{DoxyItemize}
+\item \begin{DoxyAuthor}{Autor}
+Miguel Gomes 
+\end{DoxyAuthor}
+\begin{DoxyDate}{Data}
+22 de Outubro de 2025
+\end{DoxyDate}
+
+\item 
+\end{DoxyItemize}
+
+Este programa lê valores do ADC exportados no sysfs e converte a resistência do LDR em uma estimativa percentual de luminosidade (0\% = escuro, 100\% = claro). O valor lido é então enviado via protocolo UDP (datagrama) para o servidor rodando no endereço SERVER\+\_\+\+IP (Host Windows/\+WSL) na porta 8080. 
+
+\label{doc-define-members}
+\Hypertarget{_cliente_u_d_p__sensor__ldr_8cpp_doc-define-members}
+\doxysubsection{Definições e macros}
+\Hypertarget{_cliente_u_d_p__sensor__ldr_8cpp_a6b20d41d6252e9871430c242cb1a56e7}\index{ClienteUDP\_sensor\_ldr.cpp@{ClienteUDP\_sensor\_ldr.cpp}!BUFFER\_SIZE@{BUFFER\_SIZE}}
+\index{BUFFER\_SIZE@{BUFFER\_SIZE}!ClienteUDP\_sensor\_ldr.cpp@{ClienteUDP\_sensor\_ldr.cpp}}
+\doxysubsubsection{\texorpdfstring{BUFFER\_SIZE}{BUFFER\_SIZE}}
+{\footnotesize\ttfamily \label{_cliente_u_d_p__sensor__ldr_8cpp_a6b20d41d6252e9871430c242cb1a56e7} 
+\#define BUFFER\+\_\+\+SIZE~1024}
+
+
+
+Tamanho máximo do buffer de comunicação. 
+
+\Hypertarget{_cliente_u_d_p__sensor__ldr_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}\index{ClienteUDP\_sensor\_ldr.cpp@{ClienteUDP\_sensor\_ldr.cpp}!PORT@{PORT}}
+\index{PORT@{PORT}!ClienteUDP\_sensor\_ldr.cpp@{ClienteUDP\_sensor\_ldr.cpp}}
+\doxysubsubsection{\texorpdfstring{PORT}{PORT}}
+{\footnotesize\ttfamily \label{_cliente_u_d_p__sensor__ldr_8cpp_a614217d263be1fb1a5f76e2ff7be19a2} 
+\#define PORT~8080}
+
+
+
+Porta UDP do servidor. 
+
+\Hypertarget{_cliente_u_d_p__sensor__ldr_8cpp_a28d06fc286f28044ed3380969700ff3f}\index{ClienteUDP\_sensor\_ldr.cpp@{ClienteUDP\_sensor\_ldr.cpp}!SERVER\_IP@{SERVER\_IP}}
+\index{SERVER\_IP@{SERVER\_IP}!ClienteUDP\_sensor\_ldr.cpp@{ClienteUDP\_sensor\_ldr.cpp}}
+\doxysubsubsection{\texorpdfstring{SERVER\_IP}{SERVER\_IP}}
+{\footnotesize\ttfamily \label{_cliente_u_d_p__sensor__ldr_8cpp_a28d06fc286f28044ed3380969700ff3f} 
+\#define SERVER\+\_\+\+IP~"{}192.\+168.\+42.\+10"{}}
+
+
+
+Endereço IP do servidor (Host Windows/\+WSL). 
+
+
+
+\label{doc-func-members}
+\Hypertarget{_cliente_u_d_p__sensor__ldr_8cpp_doc-func-members}
+\doxysubsection{Funções}
+\Hypertarget{_cliente_u_d_p__sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\index{ClienteUDP\_sensor\_ldr.cpp@{ClienteUDP\_sensor\_ldr.cpp}!main@{main}}
+\index{main@{main}!ClienteUDP\_sensor\_ldr.cpp@{ClienteUDP\_sensor\_ldr.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily \label{_cliente_u_d_p__sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+int main (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+
+
+Função principal. 
+
+Configura o socket UDP para enviar dados para o servidor 192.\+168.\+42.\+10\+:8080. Cria um objeto \doxylink{class_sensor_l_d_r}{Sensor\+LDR}, lê continuamente a luminosidade, converte o valor inteiro para string e envia o datagrama para o servidor a cada segundo.
+
+\begin{DoxyReturn}{Retorna}
+0 em caso de execução normal. 
+\end{DoxyReturn}
+Loop principal de leitura e envio.
+
+O loop executa leituras e envios a cada 1 segundo.
+
+Envia o datagrama UDP.
+
+O UDP é um protocolo sem conexão e não confiável; a chegada do pacote não é garantida pelo protocolo e é gerenciada pela aplicação (se necessário). O uso do UDP prioriza a baixa latência de dados de status em tempo real. 
+\begin{DoxyParams}{Parâmetros}
+{\em client\+\_\+socket} & O descritor do socket. \\
+\hline
+{\em message} & O ponteiro para os dados a serem enviados. \\
+\hline
+{\em message\+\_\+len} & O tamanho dos dados. \\
+\hline
+{\em 0} & Flags (geralmente 0 para UDP). \\
+\hline
+{\em server\+\_\+addr} & O endereço de destino. \\
+\hline
+{\em sizeof(server\+\_\+addr)} & O tamanho da estrutura de endereço.\\
+\hline
+\end{DoxyParams}
+
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00135\ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00136\ \ \ \ \ \textcolor{comment}{//\ Inicializa\ o\ sensor\ LDR\ com\ o\ caminho\ do\ arquivo\ ADC\ no\ sysfs\ da\ placa}}
+\DoxyCodeLine{00137\ \ \ \ \ \mbox{\hyperlink{class_sensor_l_d_r}{SensorLDR}}\ ldr(\textcolor{stringliteral}{"{}/sys/bus/iio/devices/iio:device0/in\_voltage13\_raw"{}});}
+\DoxyCodeLine{00138\ }
+\DoxyCodeLine{00139\ \ \ \ \ \textcolor{keywordtype}{int}\ client\_socket;}
+\DoxyCodeLine{00140\ \ \ \ \ \textcolor{keyword}{struct\ }sockaddr\_in\ server\_addr;}
+\DoxyCodeLine{00141\ \ \ \ \ \textcolor{keywordtype}{char}\ buffer[\mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}}];}
+\DoxyCodeLine{00142\ \ \ \ \ }
+\DoxyCodeLine{00143\ \ \ \ \ \textcolor{comment}{//\ 1.\ Criar\ o\ Socket}}
+\DoxyCodeLine{00144\ \ \ \ \ \textcolor{comment}{//\ AF\_INET:\ Endereços\ IPv4}}
+\DoxyCodeLine{00145\ \ \ \ \ \textcolor{comment}{//\ SOCK\_DGRAM:\ Protocolo\ UDP\ (datagrama,\ sem\ conexão)}}
+\DoxyCodeLine{00146\ \ \ \ \ client\_socket\ =\ socket(AF\_INET,\ SOCK\_DGRAM,\ 0);}
+\DoxyCodeLine{00147\ \ \ \ \ \textcolor{keywordflow}{if}\ (client\_socket\ <\ 0)\ \{}
+\DoxyCodeLine{00148\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Erro\ ao\ criar\ o\ socket\ UDP\ do\ cliente"{}});}
+\DoxyCodeLine{00149\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00150\ \ \ \ \ \}}
+\DoxyCodeLine{00151\ }
+\DoxyCodeLine{00152\ \ \ \ \ \textcolor{comment}{//\ Limpar\ e\ configurar\ o\ endereço\ do\ servidor}}
+\DoxyCodeLine{00153\ \ \ \ \ memset(\&server\_addr,\ 0,\ \textcolor{keyword}{sizeof}(server\_addr));}
+\DoxyCodeLine{00154\ \ \ \ \ server\_addr.sin\_family\ =\ AF\_INET;}
+\DoxyCodeLine{00155\ \ \ \ \ server\_addr.sin\_port\ =\ htons(\mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}});\ \textcolor{comment}{//\ Converte\ a\ porta\ (8080)\ para\ a\ ordem\ de\ bytes\ de\ rede}}
+\DoxyCodeLine{00156\ }
+\DoxyCodeLine{00157\ \ \ \ \ \textcolor{comment}{//\ Converter\ endereço\ IP\ de\ string\ para\ formato\ binário}}
+\DoxyCodeLine{00158\ \ \ \ \ \textcolor{keywordflow}{if}\ (inet\_pton(AF\_INET,\ \mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_a28d06fc286f28044ed3380969700ff3f}{SERVER\_IP}},\ \&server\_addr.sin\_addr)\ <=\ 0)\ \{}
+\DoxyCodeLine{00159\ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Endereco\ IP\ invalido/nao\ suportado"{}});}
+\DoxyCodeLine{00160\ \ \ \ \ \ \ \ \ close(client\_socket);}
+\DoxyCodeLine{00161\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00162\ \ \ \ \ \}}
+\DoxyCodeLine{00163\ \ \ \ \ }
+\DoxyCodeLine{00164\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Socket\ UDP\ criado\ com\ sucesso."{}}\ <<\ endl;}
+\DoxyCodeLine{00165\ }
+\DoxyCodeLine{00170\ \ \ \ \ \textcolor{keywordflow}{while}\ (\textcolor{keyword}{true})\ \{}
+\DoxyCodeLine{00171\ \ \ \ \ \ \ \ \ memset(buffer,\ 0,\ \mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_a6b20d41d6252e9871430c242cb1a56e7}{BUFFER\_SIZE}});}
+\DoxyCodeLine{00172\ }
+\DoxyCodeLine{00173\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ O\ valor\ lido\ do\ sensor\ é\ um\ INT}}
+\DoxyCodeLine{00174\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ val\ =\ ldr.lerLuminosidadePercentual();}
+\DoxyCodeLine{00175\ }
+\DoxyCodeLine{00176\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Converte\ o\ valor\ inteiro\ (int)\ para\ uma\ string\ C++\ (std::string)}}
+\DoxyCodeLine{00177\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{string}\ val\_str\ =\ to\_string(val);}
+\DoxyCodeLine{00178\ }
+\DoxyCodeLine{00179\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Obtém\ o\ ponteiro\ C-\/style\ (const\ char*)\ da\ string\ para\ uso\ na\ função\ sendto()}}
+\DoxyCodeLine{00180\ \ \ \ \ \ \ \ \ \textcolor{keyword}{const}\ \textcolor{keywordtype}{char}\ *message\ =\ val\_str.c\_str();\ }
+\DoxyCodeLine{00181\ \ \ \ \ }
+\DoxyCodeLine{00182\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Calcula\ o\ tamanho\ da\ mensagem\ (apenas\ o\ tamanho\ da\ string,\ sem\ o\ terminador\ nulo)}}
+\DoxyCodeLine{00183\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{size\_t}\ message\_len\ =\ val\_str.length();}
+\DoxyCodeLine{00184\ }
+\DoxyCodeLine{00197\ \ \ \ \ \ \ \ \ ssize\_t\ bytes\_sent\ =\ sendto(client\_socket,\ message,\ message\_len,\ 0,\ (\textcolor{keyword}{const}\ \textcolor{keyword}{struct}\ sockaddr\ *)\&server\_addr,\ \textcolor{keyword}{sizeof}(server\_addr));}
+\DoxyCodeLine{00198\ }
+\DoxyCodeLine{00199\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (bytes\_sent\ ==\ -\/1)\ \{}
+\DoxyCodeLine{00200\ \ \ \ \ \ \ \ \ \ \ \ \ perror(\textcolor{stringliteral}{"{}Erro\ ao\ enviar\ datagrama"{}});}
+\DoxyCodeLine{00201\ \ \ \ \ \ \ \ \ \}\ }
+\DoxyCodeLine{00202\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{else}\{}
+\DoxyCodeLine{00203\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Datagrama\ enviado\ ("{}}\ <<\ bytes\_sent\ <<\ \textcolor{stringliteral}{"{}\ bytes)\ para\ "{}}\ <<\ \mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_a28d06fc286f28044ed3380969700ff3f}{SERVER\_IP}}\ <<\ \textcolor{stringliteral}{"{}:"{}}\ <<\ \mbox{\hyperlink{_cliente_u_d_p__sensor__ldr_8cpp_a614217d263be1fb1a5f76e2ff7be19a2}{PORT}}\ <<\ endl;}
+\DoxyCodeLine{00204\ \ \ \ \ \ \ \ \ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Luminosidade:\ "{}}\ <<\ message\ <<\ \textcolor{stringliteral}{"{}\%"{}}\ <<\ std::endl;}
+\DoxyCodeLine{00205\ \ \ \ \ \ \ \ \ \ \ \ \ sleep(1);\ \textcolor{comment}{//\ Espera\ 1\ segundo\ antes\ da\ próxima\ leitura/envio}}
+\DoxyCodeLine{00206\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00207\ \ \ \ \ \}}
+\DoxyCodeLine{00208\ \ \ \ \ \textcolor{comment}{//\ O\ loop\ é\ infinito,\ o\ código\ abaixo\ só\ seria\ executado\ em\ caso\ de\ interrupção}}
+\DoxyCodeLine{00209\ \ \ \ \ \textcolor{comment}{//\ 4.\ Fechar\ o\ Socket}}
+\DoxyCodeLine{00210\ \ \ \ \ close(client\_socket);}
+\DoxyCodeLine{00211\ \ \ \ \ cout\ <<\ \textcolor{stringliteral}{"{}Socket\ fechado.\ Cliente\ UDP\ encerrado."{}}\ <<\ endl;}
+\DoxyCodeLine{00212\ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00213\ \}}
+
+\end{DoxyCode}
+Este é o diagrama das funções utilizadas por essa função\+:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{_cliente_u_d_p__sensor__ldr_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4_cgraph}
+\end{center}
+\end{figure}

@@ -1,0 +1,170 @@
+\doxysection{Refência do Namespace Servidor\+UDP\+\_\+sensor\+\_\+ldr}
+\hypertarget{namespace_servidor_u_d_p__sensor__ldr}{}\label{namespace_servidor_u_d_p__sensor__ldr}\index{ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}}
+\doxysubsubsection*{Componentes}
+\begin{DoxyCompactItemize}
+\item 
+class \mbox{\hyperlink{class_servidor_u_d_p__sensor__ldr_1_1_app}{App}}
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Funções}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_aa1f370123bd4faaa3db0b217a869e72e}{iniciar\+\_\+servidor\+\_\+udp}} ()
+\end{DoxyCompactItemize}
+\doxysubsubsection*{Variáveis}
+\begin{DoxyCompactItemize}
+\item 
+str \mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a26fb419d906c2e98313184ee698eb27a}{UDP\+\_\+\+IP}} = "{}192.\+168.\+42.\+10"{}
+\item 
+int \mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a1737169138775a3606004a13957e7b78}{UDP\+\_\+\+PORT}} = 8080
+\item 
+int \mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_ac0f3aadaebdabbaab21599b34e613bfa}{HISTORICO\+\_\+\+MAX\+\_\+\+PONTOS}} = 60
+\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a7c6a21874cea237fa47468493057dada}{dados\+\_\+fila}} = queue.\+Queue()
+\begin{DoxyCompactList}\small\item\em Fila thread-\/safe para armazenar os dicionários/objetos JSON recebidos. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_aebf8a1fdc8014bd03fdeb39bbe5810a6}{dados\+\_\+grafico}} = deque(maxlen=\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_ac0f3aadaebdabbaab21599b34e613bfa}{HISTORICO\+\_\+\+MAX\+\_\+\+PONTOS}})
+\begin{DoxyCompactList}\small\item\em Deque para armazenar o histórico de valores para plotagem, com tamanho máximo. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a48733734084110a48a7ea86cfcd987cf}{servidor\+\_\+thread}} = threading.\+Thread(target=\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_aa1f370123bd4faaa3db0b217a869e72e}{iniciar\+\_\+servidor\+\_\+udp}}, daemon=True)
+\item 
+\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_a6957de8a595b6ffa336f038cf788b6b8}{app}} = \mbox{\hyperlink{class_servidor_u_d_p__sensor__ldr_1_1_app}{App}}()
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Descrição detalhada}
+\begin{DoxyVerb}@file servidorUDP_sensor_ldr.py
+@brief Aplicação GUI de Monitoramento em Tempo Real para Sensor LDR via UDP.
+
+Este script Python implementa um monitor gráfico em tempo real para dados
+de luminosidade (em porcentagem) recebidos através de pacotes UDP.
+Ele usa Tkinter para a interface gráfica e Matplotlib para o gráfico de histórico.
+A principal característica é a função iniciar_servidor_udp, que recebe uma
+string numérica via UDP e a transforma em um objeto JSON enriquecido
+para processamento na GUI.
+
+@author Gabriel Belizario
+@date 09 Novembro de 2025
+\end{DoxyVerb}
+ 
+
+\label{doc-func-members}
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_doc-func-members}
+\doxysubsection{Funções}
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_aa1f370123bd4faaa3db0b217a869e72e}\index{ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}!iniciar\_servidor\_udp@{iniciar\_servidor\_udp}}
+\index{iniciar\_servidor\_udp@{iniciar\_servidor\_udp}!ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}}
+\doxysubsubsection{\texorpdfstring{iniciar\_servidor\_udp()}{iniciar\_servidor\_udp()}}
+{\footnotesize\ttfamily \label{namespace_servidor_u_d_p__sensor__ldr_aa1f370123bd4faaa3db0b217a869e72e} 
+Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+iniciar\+\_\+servidor\+\_\+udp (\begin{DoxyParamCaption}{}{}\end{DoxyParamCaption})}
+
+\begin{DoxyVerb}@brief Inicia um servidor UDP em um thread separado para receber dados.
+
+Escuta por pacotes UDP contendo uma string numérica. Converte a string
+para um número inteiro e a *enriquece* com metadados (ID e unidade)
+em um formato de dicionário Python (JSON). O dicionário enriquecido
+é então colocado na fila de dados para ser processado pela thread principal (GUI).
+O ID do sensor é fixo como "LDR_KY-018" e a unidade como "%".
+
+@note Assume-se que os pacotes UDP contêm apenas a representação string de um inteiro.
+@return Não retorna. Executa em loop infinito.
+\end{DoxyVerb}
+ 
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00050\ \textcolor{keyword}{def\ }iniciar\_servidor\_udp(): }
+\DoxyCodeLine{00051\ \ \ \ \ \textcolor{stringliteral}{"{}"{}"{} }}
+\DoxyCodeLine{00052\ \textcolor{stringliteral}{\ \ \ \ @brief\ Inicia\ um\ servidor\ UDP\ em\ um\ thread\ separado\ para\ receber\ dados. }}
+\DoxyCodeLine{00053\ \textcolor{stringliteral}{ }}
+\DoxyCodeLine{00054\ \textcolor{stringliteral}{\ \ \ \ Escuta\ por\ pacotes\ UDP\ contendo\ uma\ string\ numérica.\ Converte\ a\ string }}
+\DoxyCodeLine{00055\ \textcolor{stringliteral}{\ \ \ \ para\ um\ número\ inteiro\ e\ a\ *enriquece*\ com\ metadados\ (ID\ e\ unidade) }}
+\DoxyCodeLine{00056\ \textcolor{stringliteral}{\ \ \ \ em\ um\ formato\ de\ dicionário\ Python\ (JSON).\ O\ dicionário\ enriquecido }}
+\DoxyCodeLine{00057\ \textcolor{stringliteral}{\ \ \ \ é\ então\ colocado\ na\ fila\ de\ dados\ para\ ser\ processado\ pela\ thread\ principal\ (GUI). }}
+\DoxyCodeLine{00058\ \textcolor{stringliteral}{\ \ \ \ O\ ID\ do\ sensor\ é\ fixo\ como\ "{}LDR\_KY-\/018"{}\ e\ a\ unidade\ como\ "{}\%"{}. }}
+\DoxyCodeLine{00059\ \textcolor{stringliteral}{\ \ \ \  }}
+\DoxyCodeLine{00060\ \textcolor{stringliteral}{\ \ \ \ @note\ Assume-\/se\ que\ os\ pacotes\ UDP\ contêm\ apenas\ a\ representação\ string\ de\ um\ inteiro. }}
+\DoxyCodeLine{00061\ \textcolor{stringliteral}{\ \ \ \ @return\ Não\ retorna.\ Executa\ em\ loop\ infinito. }}
+\DoxyCodeLine{00062\ \textcolor{stringliteral}{\ \ \ \ "{}"{}"{}} }
+\DoxyCodeLine{00063\ \ \ \ \ sock\ =\ socket.socket(socket.AF\_INET,\ socket.SOCK\_DGRAM) }
+\DoxyCodeLine{00064\ \ \ \ \ sock.bind((UDP\_IP,\ UDP\_PORT)) }
+\DoxyCodeLine{00065\ \ \ \ \ print(f\textcolor{stringliteral}{"{}Servidor\ UDP\ (modo\ string)\ escutando\ em\ \{UDP\_IP\}:\{UDP\_PORT\}..."{}}) }
+\DoxyCodeLine{00066\  }
+\DoxyCodeLine{00067\ \ \ \ \ \textcolor{keywordflow}{while}\ \textcolor{keyword}{True}: }
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{try}: }
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 1.\ Recebe\ o\ datagrama\ (bytes) }}
+\DoxyCodeLine{00070\ \ \ \ \ \ \ \ \ \ \ \ \ data,\ addr\ =\ sock.recvfrom(1024)\  }
+\DoxyCodeLine{00071\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00072\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 2.\ Converte\ bytes\ para\ string\ e\ remove\ espaços\ em\ branco\ (ex:\ "{}75"{}) }}
+\DoxyCodeLine{00073\ \ \ \ \ \ \ \ \ \ \ \ \ mensagem\_string\ =\ data.decode(\textcolor{stringliteral}{'utf-\/8'}).strip() }
+\DoxyCodeLine{00074\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00075\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 3.\ Converte\ a\ string\ (ex:\ "{}75"{})\ para\ um\ número\ inteiro }}
+\DoxyCodeLine{00076\ \ \ \ \ \ \ \ \ \ \ \ \ valor\_percentual\ =\ int(mensagem\_string) }
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 4.\ TRANSFORMAÇÃO\ PARA\ JSON\ (Dicionário\ Python) }}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ dados\_json\_enriquecidos\ =\ \{ }
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}id"{}}:\ \textcolor{stringliteral}{"{}LDR\_KY-\/018"{}},\ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Adiciona\ o\ ID\ do\ grupo }}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}valor"{}}:\ valor\_percentual, }
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{stringliteral}{"{}unidade"{}}:\ \textcolor{stringliteral}{"{}\%"{}}\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Adiciona\ a\ unidade }}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ \} }
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ 5.\ Coloca\ o\ objeto\ JSON\ (dicionário)\ na\ fila }}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ dados\_fila.put(dados\_json\_enriquecidos) }
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \  }
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ (ValueError,\ UnicodeDecodeError): }
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{\#\ Erro\ se\ a\ mensagem\ não\ for\ um\ número\ (ex:\ "{}ola"{}) }}
+\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Erro:\ Pacote\ recebido\ não\ é\ um\ número\ válido:\ \{data\}"{}}) }
+\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{except}\ Exception\ \textcolor{keyword}{as}\ e: }
+\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ print(f\textcolor{stringliteral}{"{}Erro\ no\ servidor\ UDP:\ \{e\}"{}}) }
+\DoxyCodeLine{00093\  }
+
+\end{DoxyCode}
+
+
+\label{doc-var-members}
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_doc-var-members}
+\doxysubsection{Variáveis}
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_a6957de8a595b6ffa336f038cf788b6b8}\index{ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}!app@{app}}
+\index{app@{app}!ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}}
+\doxysubsubsection{\texorpdfstring{app}{app}}
+{\footnotesize\ttfamily \label{namespace_servidor_u_d_p__sensor__ldr_a6957de8a595b6ffa336f038cf788b6b8} 
+Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+app = \mbox{\hyperlink{class_servidor_u_d_p__sensor__ldr_1_1_app}{App}}()}
+
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_a7c6a21874cea237fa47468493057dada}\index{ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}!dados\_fila@{dados\_fila}}
+\index{dados\_fila@{dados\_fila}!ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}}
+\doxysubsubsection{\texorpdfstring{dados\_fila}{dados\_fila}}
+{\footnotesize\ttfamily \label{namespace_servidor_u_d_p__sensor__ldr_a7c6a21874cea237fa47468493057dada} 
+Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+dados\+\_\+fila = queue.\+Queue()}
+
+
+
+Fila thread-\/safe para armazenar os dicionários/objetos JSON recebidos. 
+
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_aebf8a1fdc8014bd03fdeb39bbe5810a6}\index{ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}!dados\_grafico@{dados\_grafico}}
+\index{dados\_grafico@{dados\_grafico}!ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}}
+\doxysubsubsection{\texorpdfstring{dados\_grafico}{dados\_grafico}}
+{\footnotesize\ttfamily \label{namespace_servidor_u_d_p__sensor__ldr_aebf8a1fdc8014bd03fdeb39bbe5810a6} 
+Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+dados\+\_\+grafico = deque(maxlen=\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_ac0f3aadaebdabbaab21599b34e613bfa}{HISTORICO\+\_\+\+MAX\+\_\+\+PONTOS}})}
+
+
+
+Deque para armazenar o histórico de valores para plotagem, com tamanho máximo. 
+
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_ac0f3aadaebdabbaab21599b34e613bfa}\index{ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}!HISTORICO\_MAX\_PONTOS@{HISTORICO\_MAX\_PONTOS}}
+\index{HISTORICO\_MAX\_PONTOS@{HISTORICO\_MAX\_PONTOS}!ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}}
+\doxysubsubsection{\texorpdfstring{HISTORICO\_MAX\_PONTOS}{HISTORICO\_MAX\_PONTOS}}
+{\footnotesize\ttfamily \label{namespace_servidor_u_d_p__sensor__ldr_ac0f3aadaebdabbaab21599b34e613bfa} 
+int Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+HISTORICO\+\_\+\+MAX\+\_\+\+PONTOS = 60}
+
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_a48733734084110a48a7ea86cfcd987cf}\index{ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}!servidor\_thread@{servidor\_thread}}
+\index{servidor\_thread@{servidor\_thread}!ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}}
+\doxysubsubsection{\texorpdfstring{servidor\_thread}{servidor\_thread}}
+{\footnotesize\ttfamily \label{namespace_servidor_u_d_p__sensor__ldr_a48733734084110a48a7ea86cfcd987cf} 
+Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+servidor\+\_\+thread = threading.\+Thread(target=\mbox{\hyperlink{namespace_servidor_u_d_p__sensor__ldr_aa1f370123bd4faaa3db0b217a869e72e}{iniciar\+\_\+servidor\+\_\+udp}}, daemon=True)}
+
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_a26fb419d906c2e98313184ee698eb27a}\index{ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}!UDP\_IP@{UDP\_IP}}
+\index{UDP\_IP@{UDP\_IP}!ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}}
+\doxysubsubsection{\texorpdfstring{UDP\_IP}{UDP\_IP}}
+{\footnotesize\ttfamily \label{namespace_servidor_u_d_p__sensor__ldr_a26fb419d906c2e98313184ee698eb27a} 
+str Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+UDP\+\_\+\+IP = "{}192.\+168.\+42.\+10"{}}
+
+\Hypertarget{namespace_servidor_u_d_p__sensor__ldr_a1737169138775a3606004a13957e7b78}\index{ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}!UDP\_PORT@{UDP\_PORT}}
+\index{UDP\_PORT@{UDP\_PORT}!ServidorUDP\_sensor\_ldr@{ServidorUDP\_sensor\_ldr}}
+\doxysubsubsection{\texorpdfstring{UDP\_PORT}{UDP\_PORT}}
+{\footnotesize\ttfamily \label{namespace_servidor_u_d_p__sensor__ldr_a1737169138775a3606004a13957e7b78} 
+int Servidor\+UDP\+\_\+sensor\+\_\+ldr.\+UDP\+\_\+\+PORT = 8080}
+

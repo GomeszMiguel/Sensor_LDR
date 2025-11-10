@@ -7,8 +7,7 @@ Classe para leitura e cálculo de luminosidade a partir de um LDR.
 
 
 
-Diagrama de colaboração para Sensor\+LDR\+:
-\nopagebreak
+Diagrama de colaboração para Sensor\+LDR\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -51,9 +50,9 @@ Construtor da classe \doxylink{class_sensor_l_d_r}{Sensor\+LDR}.
 \end{DoxyParams}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ path\ =\ adcPath;}
-\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ path\ =\ adcPath;}
+\DoxyCodeLine{00070\ \ \ \ \ \}}
 
 \end{DoxyCode}
 
@@ -78,34 +77,33 @@ Luminosidade percentual (0 a 100).
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor\ =\ \mbox{\hyperlink{class_sensor_l_d_r_aa293a835a0aba71884e116af2db215f8}{lerValor}}();}
-\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fórmula\ do\ divisor\ de\ tensão:\ R\_LDR\ =\ R\_FIXO\ *\ (ADC\_MAX\ -\/\ V\_LDR)\ /\ V\_LDR}}
-\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Onde\ V\_LDR\ é\ valor\ lido\ do\ ADC\ (ADC\_MAX\ é\ a\ tensão\ de\ referência)}}
-\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ r\_ldr\ =\ R\_FIXO\ *\ (ADC\_MAX\ -\/\ valor)\ /\ valor;}
-\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_ldr\ =\ log(r\_ldr);}
-\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_claro\ =\ log(R\_CLARO);}
-\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_escuro\ =\ log(R\_ESCURO);}
-\DoxyCodeLine{00089\ }
-\DoxyCodeLine{00090\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Limita\ o\ valor\ para\ 0\%}}
-\DoxyCodeLine{00091\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ >\ log\_r\_escuro)\ \{}
-\DoxyCodeLine{00092\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
-\DoxyCodeLine{00093\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00094\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Limita\ o\ valor\ para\ 100\%}}
-\DoxyCodeLine{00095\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ <\ log\_r\_claro)\ \{}
-\DoxyCodeLine{00096\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 100;}
-\DoxyCodeLine{00097\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00098\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00099\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mapeamento\ linear\ na\ escala\ logarítmica}}
-\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ porcentagem\ =\ 100.0\ *\ (log\_r\_escuro\ -\/\ log\_r\_ldr)\ /\ (log\_r\_escuro\ -\/\ log\_r\_claro);}
-\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ }
-\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(porcentagem);}
-\DoxyCodeLine{00103\ \ \ \ \ \}}
+\DoxyCodeLine{00100\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00101\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor\ =\ \mbox{\hyperlink{class_sensor_l_d_r_aa293a835a0aba71884e116af2db215f8}{lerValor}}();}
+\DoxyCodeLine{00102\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Fórmula\ do\ divisor\ de\ tensão:\ R\_LDR\ =\ R\_FIXO\ *\ (ADC\_MAX\ -\/\ V\_LDR)\ /\ V\_LDR}}
+\DoxyCodeLine{00103\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Onde\ V\_LDR\ é\ valor\ lido\ do\ ADC\ (ADC\_MAX\ é\ a\ tensão\ de\ referência)}}
+\DoxyCodeLine{00104\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ r\_ldr\ =\ R\_FIXO\ *\ (ADC\_MAX\ -\/\ valor)\ /\ valor;}
+\DoxyCodeLine{00105\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00106\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_ldr\ =\ log(r\_ldr);}
+\DoxyCodeLine{00107\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_claro\ =\ log(R\_CLARO);}
+\DoxyCodeLine{00108\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ log\_r\_escuro\ =\ log(R\_ESCURO);}
+\DoxyCodeLine{00109\ }
+\DoxyCodeLine{00110\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Limita\ o\ valor\ para\ 0\%}}
+\DoxyCodeLine{00111\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ >\ log\_r\_escuro)\ \{}
+\DoxyCodeLine{00112\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 0;}
+\DoxyCodeLine{00113\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00114\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Limita\ o\ valor\ para\ 100\%}}
+\DoxyCodeLine{00115\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (log\_r\_ldr\ <\ log\_r\_claro)\ \{}
+\DoxyCodeLine{00116\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ 100;}
+\DoxyCodeLine{00117\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00118\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00119\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Mapeamento\ linear\ na\ escala\ logarítmica}}
+\DoxyCodeLine{00120\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{float}\ porcentagem\ =\ 100.0\ *\ (log\_r\_escuro\ -\/\ log\_r\_ldr)\ /\ (log\_r\_escuro\ -\/\ log\_r\_claro);}
+\DoxyCodeLine{00121\ \ \ \ \ \ \ \ \ }
+\DoxyCodeLine{00122\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{static\_cast<}\textcolor{keywordtype}{int}\textcolor{keyword}{>}(porcentagem);}
+\DoxyCodeLine{00123\ \ \ \ \ \}}
 
 \end{DoxyCode}
-Este é o diagrama das funções utilizadas por essa função\+:
-\nopagebreak
+Este é o diagrama das funções utilizadas por essa função\+:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -137,18 +135,18 @@ Valor inteiro lido diretamente do ADC.
 \end{DoxyReturn}
 
 \begin{DoxyCode}{0}
-\DoxyCodeLine{00059\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
-\DoxyCodeLine{00060\ \ \ \ \ \ \ \ \ std::ifstream\ file(path);}
-\DoxyCodeLine{00061\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor\ =\ 0;}
-\DoxyCodeLine{00062\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
-\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \ \ \ \ file\ >>\ valor;}
-\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
-\DoxyCodeLine{00065\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
-\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Em\ um\ sistema\ embarcado\ real,\ aqui\ deve\ haver\ um\ tratamento\ de\ erro\ mais\ robusto.}}
-\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Erro:\ Nao\ foi\ possivel\ abrir\ o\ arquivo\ ADC\ em\ "{}}\ <<\ path\ <<\ endl;}
-\DoxyCodeLine{00068\ \ \ \ \ \ \ \ \ \}}
-\DoxyCodeLine{00069\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ valor;}
-\DoxyCodeLine{00070\ \ \ \ \ \}}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{}
+\DoxyCodeLine{00080\ \ \ \ \ \ \ \ \ std::ifstream\ file(path);}
+\DoxyCodeLine{00081\ \ \ \ \ \ \ \ \ \textcolor{keywordtype}{int}\ valor\ =\ 0;}
+\DoxyCodeLine{00082\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (file.is\_open())\ \{}
+\DoxyCodeLine{00083\ \ \ \ \ \ \ \ \ \ \ \ \ file\ >>\ valor;}
+\DoxyCodeLine{00084\ \ \ \ \ \ \ \ \ \ \ \ \ file.close();}
+\DoxyCodeLine{00085\ \ \ \ \ \ \ \ \ \}\ \textcolor{keywordflow}{else}\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ Em\ um\ sistema\ embarcado\ real,\ aqui\ deve\ haver\ um\ tratamento\ de\ erro\ mais\ robusto.}}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ cerr\ <<\ \textcolor{stringliteral}{"{}Erro:\ Nao\ foi\ possivel\ abrir\ o\ arquivo\ ADC\ em\ "{}}\ <<\ path\ <<\ endl;}
+\DoxyCodeLine{00088\ \ \ \ \ \ \ \ \ \}}
+\DoxyCodeLine{00089\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ valor;}
+\DoxyCodeLine{00090\ \ \ \ \ \}}
 
 \end{DoxyCode}
 Esse é o diagrama das funções que utilizam essa função\+:

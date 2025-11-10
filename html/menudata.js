@@ -24,12 +24,20 @@
 */
 var menudata={children:[
 {text:"Página Principal",url:"index.html"},
+{text:"Namespaces",url:"namespaces.html",children:[
+{text:"Lista de Namespaces",url:"namespaces.html"},
+{text:"Membros do namespace",url:"namespacemembers.html",children:[
+{text:"Todos",url:"namespacemembers.html"},
+{text:"Funções",url:"namespacemembers_func.html"},
+{text:"Variáveis",url:"namespacemembers_vars.html"}]}]},
 {text:"Classes",url:"annotated.html",children:[
 {text:"Lista de Classes",url:"annotated.html"},
 {text:"Índice dos Componentes",url:"classes.html"},
+{text:"Hierarquia de Classes",url:"inherits.html"},
 {text:"Membros de classe",url:"functions.html",children:[
 {text:"Todos",url:"functions.html"},
-{text:"Funções",url:"functions_func.html"}]}]},
+{text:"Funções",url:"functions_func.html"},
+{text:"Variáveis",url:"functions_vars.html"}]}]},
 {text:"Arquivos",url:"files.html",children:[
 {text:"Lista de Arquivos",url:"files.html"},
 {text:"Membros dos Arquivos",url:"globals.html",children:[

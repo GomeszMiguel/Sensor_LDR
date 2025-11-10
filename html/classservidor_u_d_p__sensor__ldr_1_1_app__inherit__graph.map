@@ -1,0 +1,5 @@
+<map id="servidorUDP_sensor_ldr.App" name="servidorUDP_sensor_ldr.App">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,123,152,453"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="56,5,101,75"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="82,90,82,123,76,123,76,90"/>
+</map>

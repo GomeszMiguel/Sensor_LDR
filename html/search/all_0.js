@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['buffer_5fsize_0',['BUFFER_SIZE',['../cliente_u_d_p__sensor__ldr_8cpp.html#a6b20d41d6252e9871430c242cb1a56e7',1,'clienteUDP_sensor_ldr.cpp']]]
+  ['_5f_5finit_5f_5f_0',['__init__',['../classservidor_u_d_p__sensor__ldr_1_1_app.html#a64fe39a55c7becf0258dee8c91715d4f',1,'servidorUDP_sensor_ldr::App']]]
 ];

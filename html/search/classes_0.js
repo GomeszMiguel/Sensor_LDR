@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sensorldr_0',['SensorLDR',['../class_sensor_l_d_r.html',1,'']]]
+  ['app_0',['App',['../classservidor_u_d_p__sensor__ldr_1_1_app.html',1,'servidorUDP_sensor_ldr']]]
 ];

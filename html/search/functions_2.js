@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['sensorldr_0',['SensorLDR',['../class_sensor_l_d_r.html#a79fb92cf93f8e1b476bbf3073b143432',1,'SensorLDR']]]
+  ['criar_5fwidgets_0',['criar_widgets',['../classservidor_u_d_p__sensor__ldr_1_1_app.html#af4d337d4ff30b72a7646a644d40c1684',1,'servidorUDP_sensor_ldr::App']]]
 ];
