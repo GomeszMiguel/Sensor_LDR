@@ -31,7 +31,7 @@ from matplotlib.figure import Figure
 # --- Configurações ---
 ## @def UDP_IP
 # O endereço IP local para o servidor UDP.
-UDP_IP = "192.168.42.10" 
+UDP_IP = "192.168.42.10"  # Alterado para corresponder ao Código 1
 ## @def UDP_PORT
 # A porta UDP para escuta. Deve corresponder à porta configurada no transmissor C++.
 UDP_PORT = 8080
@@ -77,9 +77,9 @@ def iniciar_servidor_udp():
             
             # 4. TRANSFORMAÇÃO PARA JSON (Dicionário Python)
             dados_json_enriquecidos = {
-                "id": "LDR_KY-018",        # Adiciona o ID do grupo
+                "id": "LDR_KY-018",# Adiciona o ID do grupo
                 "valor": valor_percentual,
-                "unidade": "%"             # Adiciona a unidade
+                "unidade": "%"# Adiciona a unidade
             }
             
             # 5. Coloca o objeto JSON (dicionário) na fila
@@ -123,7 +123,16 @@ Utiliza o método after() do Tkinter para processar a fila de dados de forma ass
         @brief Configura e empacota todos os componentes da interface.
         Cria os rótulos, o frame do Matplotlib e o botão de salvar log.
         """
-        # ... (Detalhes da criação de widgets omitidos para brevidade Doxygen)
+        # Frame do Valor Atual
+        frame_valor = tk.Frame(self, pady=10)
+        frame_valor.pack()
+        tk.Label(frame_valor, text="Luminosidade Atual:", font=("Arial", 16)).pack()
+        self.label_valor_atual = tk.Label(frame_valor, textvariable=self.valor_atual, font=("Arial", 48, "bold"))
+        self.label_valor_atual.pack()
+
+        # Frame de Status (Alerta Visual)
+        self.label_status = tk.Label(self, textvariable=self.status_atual, font=("Arial", 14), fg="gray")
+        self.label_status.pack(pady=5)
 
         # Frame do Gráfico
         frame_grafico = tk.Frame(self)
@@ -149,7 +158,12 @@ Utiliza o método after() do Tkinter para processar a fila de dados de forma ass
         self.canvas.draw()
         self.canvas.get_tk_widget().pack(side=tk.TOP, fill=tk.BOTH, expand=True)
 
-        # ... (Fim da criação de widgets)
+        # Frame de Ações (Salvar)
+        frame_acoes = tk.Frame(self, pady=10)
+        frame_acoes.pack()
+        btn_salvar = tk.Button(frame_acoes, text="Salvar Log Atual", font=("Arial", 12), command=self.salvar_log)
+        btn_salvar.pack()
+
 
     def processar_fila_dados(self):
         """
@@ -163,13 +177,23 @@ Utiliza o método after() do Tkinter para processar a fila de dados de forma ass
         try:
             dados = dados_fila.get_nowait() 
             
+            # Esta lógica funciona porque 'dados' é o dicionário
+            # que a função 'iniciar_servidor_udp' criou
             valor = dados.get('valor', 0)
             
             # 1. Atualiza o Valor Atual
-            # ...
-
+            self.valor_atual.set(f"{valor} %")
+            
             # 2. Atualiza o Alerta Visual
-            # ...
+            if valor < 10:
+                self.status_atual.set("ALERTA: Escuridão detectada! (Possível violação)")
+                self.label_status.config(fg="red")
+            elif valor > 90:
+                self.status_atual.set("ALERTA: Luz intensa detectada! (Invólucro aberto)")
+                self.label_status.config(fg="orange")
+            else:
+                self.status_atual.set("Status: Normal")
+                self.label_status.config(fg="green")
             
             # 3. Atualiza o Histórico Gráfico
             dados_grafico.append(valor)
